@@ -1,6 +1,7 @@
 ﻿#define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include "Theatre.h"
+#include "Stage.h"
 #include <locale>
 #include <windows.h>
 
@@ -12,11 +13,17 @@ int main()
 	theatre musicalTheatre; // Создаем объекты типа Театра
 	theatre dramTheatre;
 	musicalTheatre = setTheatre();
-	dramTheatre = setTheatre((char*)"Драматический театр", 1999, 2, 32, 21);
+	cout << "\n";
+	stage bigStage[1];
+	bigStage[0] = setStage((char*)"Средняя", 300, 20);
+	dramTheatre = setTheatre((char*)"Драматический театр", 1999, 1, bigStage, 32, 21);
 	printTheatre(musicalTheatre);
+	cout << "\n";
 	printTheatre(dramTheatre);
-	/*addStage(musicalTheatre);
+	cout << "\n";
+	addStage(&musicalTheatre);
 	printTheatre(musicalTheatre);
-	delStage(musicalTheatre, 0); // Номера от 0
-	printTheatre(musicalTheatre);*/
+	cout << "\n";
+	delStage(&musicalTheatre, 0); // Номера от 0
+	printTheatre(musicalTheatre);
 }
