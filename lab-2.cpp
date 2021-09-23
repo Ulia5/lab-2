@@ -14,16 +14,21 @@ int main()
 	theatre dramTheatre;
 	musicalTheatre = setTheatre();
 	cout << "\n";
-	stage bigStage[1];
-	bigStage[0] = setStage((char*)"Средняя", 300, 20);
-	dramTheatre = setTheatre((char*)"Драматический театр", 1999, 1, bigStage, 32, 21);
+	stage bigStage[1]; // Создаем объект типа Сцена
+	performance romeoAndJuliet[1]; // Создаем объект типа Постановка
+	romeoAndJuliet[0] = setPerformance((char*)"Ромео и Джульета", 180, 2007, 20, 5); // Заполняем структуры без ввода в консоль
+	bigStage[0] = setStage((char*)"Средняя", 300, 1, romeoAndJuliet);
+	dramTheatre = setTheatre((char*)"Драматический театр", 1999, 1, bigStage);
 	printTheatre(musicalTheatre);
 	cout << "\n";
 	printTheatre(dramTheatre);
 	cout << "\n";
 	addStage(&musicalTheatre);
+	addPerformance(&musicalTheatre.stages[0]);
+	printTheatre(musicalTheatre);
+	delPerformance(&musicalTheatre.stages[0], 1);
 	printTheatre(musicalTheatre);
 	cout << "\n";
-	delStage(&musicalTheatre, 0); // Номера от 0
+	delStage(&musicalTheatre, 0); // Отсчет индексов от 0
 	printTheatre(musicalTheatre);
 }

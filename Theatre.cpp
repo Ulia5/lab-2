@@ -4,34 +4,35 @@ theatre setTheatre() {                      // Функция заполнения информации о т
 	theatre theatre = {};
 	theatre.nameTh = (char*)malloc(100);
 	cout << "Название театра: ";
-	cin >> theatre.nameTh;
+	gets_s(theatre.nameTh, 100);
 	while (theatre.nameTh == NULL) {        // Защита от неверного ввода
 		cout << "Неверный формат ввода!" << endl;
 		cin >> theatre.nameTh;
+		cin.get();
 	}
 	cout << "Год основания: ";
 	cin >> theatre.yearOfFoundation;
+	cin.get();
 	while (theatre.yearOfFoundation < 0) {  // Защита от неверного ввода
 		cout << "Неверный формат ввода!" << endl;
 		cin >> theatre.yearOfFoundation;
+		cin.get();
 	}
 	cout << "Количество сцен: ";
 	cin >> theatre.numberOfStages;
+	cin.get();
 	for (int i = 0; i < theatre.numberOfStages; i++)
 		theatre.stages[i] = setStage();
-	cout << "Количество актеров: ";
-	cin >> theatre.numberOfActors;
-	/*for (int i = 0; i < theatre.numberOfActors; i++)
-		theatre.actors[i] = setActor();*/
-	cout << "Колиество работников постановочной группы: ";
-	cin >> theatre.numberOfStageDirectors;
-	/*for (int i = 0; i < theatre.numberOfStageDirectors; i++)
-		theatre.stageDirectors[i] = setStageDirector();*/
+	for (int i = 0; i < theatre.numberOfStages; i++)
+		for (int j = 0; j < theatre.stages[i].numberOfPerformances; j++)
+			theatre.numberOfActors += theatre.stages[i].performances[j].numberOfActors;
+	for (int i = 0; i < theatre.numberOfStages; i++)
+		for (int j = 0; j < theatre.stages[i].numberOfPerformances; j++)
+			theatre.numberOfStageDirectors += theatre.stages[i].performances[j].numberOfStageDirectors;
 	return theatre;
 }
 
-theatre setTheatre(char* nameTh, int yearOfFoundation, int numberOfStages, stage stages[5],
-	int numberOfActors, /*actor actors[50],*/ int numberOfStageDirectors/*, stageDirector stageDirectors[50]*/) {
+theatre setTheatre(char* nameTh, int yearOfFoundation, int numberOfStages, stage stages[5]) {
 	theatre theatre = {};
 	theatre.nameTh = (char*)malloc(100);
 	theatre.nameTh = nameTh;
@@ -39,10 +40,12 @@ theatre setTheatre(char* nameTh, int yearOfFoundation, int numberOfStages, stage
 	theatre.numberOfStages = numberOfStages;
 	for (int i = 0; i < theatre.numberOfStages; i++)
 		theatre.stages[i] = stages[i];
-	theatre.numberOfActors = numberOfActors;
-	//theatre.actors = actors;
-	theatre.numberOfStageDirectors = numberOfStageDirectors;
-	//theatre.stageDirectors = stageDirectors;
+	for (int i = 0; i < theatre.numberOfStages; i++)
+		for (int j = 0; j < theatre.stages[i].numberOfPerformances; j++)
+			theatre.numberOfActors += theatre.stages[i].performances[j].numberOfActors;
+	for (int i = 0; i < theatre.numberOfStages; i++)
+		for (int j = 0; j < theatre.stages[i].numberOfPerformances; j++)
+			theatre.numberOfStageDirectors += theatre.stages[i].performances[j].numberOfStageDirectors;
 	return theatre;
 }
 
@@ -63,16 +66,8 @@ void printTheatre(theatre theatre) {         // Функция вывода информации о теат
 		cout << "Всего спектаклей: " << count << endl;
 		cout << "Всего актеров: ";
 		cout << theatre.numberOfActors << endl;
-		/*for (int i = 0; i < theatre.numberOfActors; i++) {
-			cout << "\tАктер №" << i + 1 << ':' << endl;
-			printActor(theatre.actors[i]);
-		}*/
 		cout << "Всего работников постановочной группы: ";
 		cout << theatre.numberOfStageDirectors << endl;
-		/*for (int i = 0; i < theatre.numberOfStageDirectors; i++) {
-			cout << "\tРаботник постановочной группы №: " << i + 1 << ':' << endl;
-			printStageDirector(theatre.stageDirectors[i]);
-		}*/
 	}
 	else
 		cout << "Для начала заполните все поля!" << endl;
@@ -95,37 +90,3 @@ void delStage(theatre *theatre, int numStage) {  // Удаление сцены из театра
 	else
 		cout << "Номер сцены должен быть в промежутке от 0 до" << theatre->numberOfStages - 1 << " (включая)." << endl;
 }
-
-/*void addActor(theatre *theatre) {     // Добавление актера в театр
-	theatre->actors[theatre->numberOfActors] = setActor();
-	theatre->numberOfActors++;
-}*/
-
-/*void delActor(theatre *theatre, int numActor) {  // Удаление актера из театра
-	if (numActor >= 0 && numActor < theatre->numberOfActors) {
-		for (int i = numActor; i < theatre->numberOfActors - 1; i++) {
-			theatre->actors[i] = theatre->actors[i + 1];
-		}
-		theatre->actors[theatre->numberOfActors - 1] = {};
-		theatre->numberOfActors--;
-	}
-	else
-		cout << "Номер актера должен быть в промежутке от 0 до" << theatre->numberOfActors - 1 << " (включая)." << endl;
-}*/
-
-/*void addStageDirector(theatre *theatre) {   // Добавление работника постановочной группы в театр
-	theatre->stageDirectors[theatre->numberOfStageDirectors] = setStageDirector();
-	theatre->numberOfStageDirectors++;
-}*/
-
-/*void delStageDirector(theatre *theatre, int numStageDirector) {  // Удаление работника постановочной группы из театра
-	if (numStageDirector >= 0 && numStageDirector < theatre->numberOfStageDirectors) {
-		for (int i = numStageDirector; i < theatre->numberOfStageDirectors - 1; i++) {
-			theatre->stageDirectors[i] = theatre->stageDirectors[i + 1];
-		}
-		theatre->stageDirectors[theatre->numberOfStageDirectors - 1] = {};
-		theatre->numberOfStageDirectors--;
-	}
-	else
-		cout << "Номер работника постановочной группы должен быть в промежутке от 0 до" << theatre->numberOfStageDirectors - 1 << " (включая)." << endl;
-}*/
