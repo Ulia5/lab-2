@@ -1,6 +1,6 @@
 #include "Actor.h"
 
-actor setActor(theatre* jobPlace) {
+actor setActor(theatre* jobPlace) { // Функция заполнения информации об Актере
 	actor actor = {};
 	actor.nameAct = (char*)malloc(50);
 	actor.surnameAct = (char*)malloc(50);
@@ -17,6 +17,7 @@ actor setActor(theatre* jobPlace) {
 }
 
 actor setActor(char* nameAct, char* surnameAct, int ageAct, theatre* jobPlace) {
+	// Функция заполнения информации об Актере(без ввода)
 	actor actor = {};
 	actor.nameAct = nameAct;
 	actor.surnameAct = surnameAct;
@@ -26,7 +27,7 @@ actor setActor(char* nameAct, char* surnameAct, int ageAct, theatre* jobPlace) {
 	return actor;
 }
 
-void printActor(actor actor) {
+void printActor(actor actor) { // Вывод информации об Актере
 	if (actor.nameAct != NULL) {
 		cout << "Информация об актере:" << endl;
 		cout << "Имя и фамилия: ";
@@ -47,15 +48,15 @@ void printActor(actor actor) {
 		cout << "Для начала заполните все поля!" << endl;
 }
 
-void addPerformanceAct(actor* actor, performance* performance) {
+void addPerformanceAct(actor* actor, performance* performance) { // Добавление Постановки в список ролей
 	actor->performanceAct[actor->roles] = *performance;
 	actor->roles++;
 	performance->numberOfActors++;
 }
 
-void delPerformanceAct(actor* actor, performance* performance) {
-	bool flag;
-	int numPerf;
+void delPerformanceAct(actor* actor, performance* performance) { // Удаление Постановки из списка ролей
+	bool flag = 0;
+	int numPerf = 0;
 	for (int i = 0; i < actor->roles; i++)
 		if (actor->performanceAct[i].namePerf == performance->namePerf) {
 			flag = true;

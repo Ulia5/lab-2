@@ -21,7 +21,7 @@
     <ClCompile Include="Stage.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="StogeDirector.cpp">
+    <ClCompile Include="StageDirector.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="Actor.cpp">

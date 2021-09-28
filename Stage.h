@@ -6,10 +6,10 @@
 using namespace std;
 
 struct stage {        // Объявление структуры Сцена
-	char* nameSt = {};
-	int hallCapacity = 0;
-	int numberOfPerformances = 0;
-	performance performances[50];
+	char* nameSt = {}; // Название сцены
+	int hallCapacity = 0; // Вместимость зала
+	int numberOfPerformances = 0; // Количество постановок
+	performance performances[50]; // Список постановок
 };
 
 stage setStage();

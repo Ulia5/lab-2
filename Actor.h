@@ -10,7 +10,7 @@ struct actor {             // Объявление структуры Актер
 	char* surnameAct = {}; // Фамилия актера
 	int ageAct = 0;        // Возраст актера
 	int roles = 0;         // Количество ролей
-	theatre jobPlace = {};
+	theatre jobPlace = {}; // Место работы
 	performance performanceAct[50] = {}; // Постановки с участием данного актера
 };
 
