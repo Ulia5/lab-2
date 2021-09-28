@@ -23,16 +23,10 @@ theatre setTheatre() {                      // Функция заполнения информации о т
 	cin.get();
 	for (int i = 0; i < theatre.numberOfStages; i++)
 		theatre.stages[i] = setStage();
-	for (int i = 0; i < theatre.numberOfStages; i++)
-		for (int j = 0; j < theatre.stages[i].numberOfPerformances; j++)
-			theatre.numberOfActors += theatre.stages[i].performances[j].numberOfActors;
-	for (int i = 0; i < theatre.numberOfStages; i++)
-		for (int j = 0; j < theatre.stages[i].numberOfPerformances; j++)
-			theatre.numberOfStageDirectors += theatre.stages[i].performances[j].numberOfStageDirectors;
 	return theatre;
 }
 
-theatre setTheatre(char* nameTh, int yearOfFoundation, int numberOfStages, stage stages[5]) {
+theatre setTheatre(char* nameTh, int yearOfFoundation, int numberOfStages, stage stages[5]) { // Функция заполнения информации о театре(без ввода)
 	theatre theatre = {};
 	theatre.nameTh = (char*)malloc(100);
 	theatre.nameTh = nameTh;
@@ -40,12 +34,6 @@ theatre setTheatre(char* nameTh, int yearOfFoundation, int numberOfStages, stage
 	theatre.numberOfStages = numberOfStages;
 	for (int i = 0; i < theatre.numberOfStages; i++)
 		theatre.stages[i] = stages[i];
-	for (int i = 0; i < theatre.numberOfStages; i++)
-		for (int j = 0; j < theatre.stages[i].numberOfPerformances; j++)
-			theatre.numberOfActors += theatre.stages[i].performances[j].numberOfActors;
-	for (int i = 0; i < theatre.numberOfStages; i++)
-		for (int j = 0; j < theatre.stages[i].numberOfPerformances; j++)
-			theatre.numberOfStageDirectors += theatre.stages[i].performances[j].numberOfStageDirectors;
 	return theatre;
 }
 
