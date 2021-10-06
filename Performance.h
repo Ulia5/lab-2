@@ -1,4 +1,4 @@
-#pragma once
+/*#pragma once
 #include <malloc.h>
 #include <stdio.h>
 #include <iostream>
@@ -16,4 +16,4 @@ performance setPerformance();
 performance setPerformance(char* namePerf, int performanceTime, int ageRestrictions);
 void printPerformance(performance performance);
 void changePerformanceTime(performance* performance);
-void changeAgeRestrictions(performance* performance);
+void changeAgeRestrictions(performance* performance);*/

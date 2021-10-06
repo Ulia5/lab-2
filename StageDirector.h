@@ -1,4 +1,4 @@
-#pragma once
+/*#pragma once
 #include <malloc.h>
 #include <iostream>
 #include "Theatre.h"
@@ -18,4 +18,4 @@ stageDirector setStageDirector(theatre* jobPlace);
 stageDirector setStageDirector(char* nameDir, char* surnameDir, int ageDir, theatre* jobPlace);
 void printStageDirector(stageDirector stageDirector);
 void addPerformanceDir(stageDirector* stageDirector, performance* performance);
-void delPerformanceDir(stageDirector* stageDirector, performance* performance);
+void delPerformanceDir(stageDirector* stageDirector, performance* performance);*/

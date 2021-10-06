@@ -1,4 +1,4 @@
-#include "Actor.h"
+/*#include "Actor.h"
 
 actor setActor(theatre* jobPlace) { // Функция заполнения информации об Актере
 	actor actor = {};
@@ -72,4 +72,4 @@ void delPerformanceAct(actor* actor, performance* performance) { // Удаление Пос
 	}
 	else
 		cout << "Таких постановок не найдено!" << endl;
-}
+}*/

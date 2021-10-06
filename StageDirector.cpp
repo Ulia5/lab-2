@@ -1,4 +1,4 @@
-#include "StageDirector.h"
+/*#include "StageDirector.h"
 
 stageDirector setStageDirector(theatre* jobPlace) { // Функция заполнения информации о Работнике постановочной группы
 	stageDirector stageDirector = {};
@@ -72,4 +72,4 @@ void delPerformanceDir(stageDirector* stageDirector, performance* performance) {
 	}
 	else
 		cout << "Таких постановок не найдено!" << endl;
-}
+}*/

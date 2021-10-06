@@ -1,4 +1,4 @@
-#include "Performance.h"
+/*#include "Performance.h"
 
 performance setPerformance() {                 // Функция заполнения информации о постановке
 	performance performance = {};
@@ -54,4 +54,4 @@ void printPerformance(performance performance) { // Вывод информации о постановк
 	}
 	else
 		cout << "Необходимо заполнить структуру!" << endl;
-}
+}*/

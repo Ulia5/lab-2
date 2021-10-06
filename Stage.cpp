@@ -1,4 +1,4 @@
-#include "Stage.h"
+/*#include "Stage.h"
 
 stage setStage() {   // Функция заполнение полей структуры
 	stage stage = {};
@@ -65,4 +65,4 @@ void delPerformance(stage *stage, int numPerformance) {  // Удаление постановки
 	}
 	else
 		cout << "Номер постановки должен быть в промежутке от 0 до" << stage->numberOfPerformances - 1 << " (включая)." << endl;
-}
+}*/
