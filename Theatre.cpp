@@ -1,12 +1,13 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include "Theatre.h"
 
 void Theatre::setTheatre() {                      // Функция заполнения информации о театре
 	nameTh = new char[100];
 	cout << "Название театра: ";
-	gets_s(nameTh, 100);
+	gets_s(nameTh, 99);
 	while (nameTh == NULL) {        // Защита от неверного ввода
 		cout << "Неверный формат ввода!" << endl;
-		cin >> nameTh;
+		gets_s(nameTh, 99);
 		cin.get();
 	}
 	cout << "Год основания: ";
@@ -17,20 +18,25 @@ void Theatre::setTheatre() {                      // Функция заполнения информац
 		cin >> yearOfFoundation;
 		cin.get();
 	}
-	/*cout << "Количество сцен: ";
-	cin >> theatre.numberOfStages;
+	cout << "Количество сцен: ";
+	cin >> numberOfStages;
 	cin.get();
-	for (int i = 0; i < theatre.numberOfStages; i++)
-		theatre.stages[i] = setStage();*/
+	while (numberOfStages < 0 || numberOfStages > 5) {  // Защита от неверного ввода
+		cout << "Неверный формат ввода!" << endl;
+		cin >> numberOfStages;
+		cin.get();
+	}
+	for (int i = 0; i < numberOfStages; i++)
+		stages[i].setStage();
 }
 
-void Theatre::setTheatre(char* name, int year/*, int numberOfStages, stage stages[5]*/) { // Функция заполнения информации о театре(без ввода)
+void Theatre::setTheatre(char* name, int year, int countStages, Stage** masStages) { // Функция заполнения информации о театре(без ввода)
 	nameTh = new char[100];
-	nameTh = name;
+	strcpy(nameTh, name);
 	yearOfFoundation = year;
-	/*theatre.numberOfStages = numberOfStages;
-	for (int i = 0; i < theatre.numberOfStages; i++)
-		theatre.stages[i] = stages[i];*/
+	numberOfStages = countStages;
+	for (int i = 0; i < numberOfStages; i++)
+		stages[i] = *masStages[i];
 }
 
 void Theatre::toString() {         // Функция вывода информации о театре
@@ -39,15 +45,15 @@ void Theatre::toString() {         // Функция вывода информации о театре
 		cout << nameTh << endl;
 		cout << "Год основания: ";
 		cout << yearOfFoundation << endl;
-		/*cout << "Всего сцен: ";
-		cout << theatre.numberOfStages << endl;
+		cout << "Всего сцен: ";
+		cout << numberOfStages << endl;
 		int count = 0;
-		for (int i = 0; i < theatre.numberOfStages; i++) {
-			count += theatre.stages[i].numberOfPerformances;
+		for (int i = 0; i < numberOfStages; i++) {
+			//count += stages[i].numberOfPerformances;
 			cout << "Сцена №" << i + 1 << ':' << endl;
-			printStage(theatre.stages[i]);
+			stages[i].toString();
 		}
-		cout << "Всего спектаклей: " << count << endl;
+		/*cout << "Всего спектаклей: " << count << endl;
 		cout << "Всего актеров: ";
 		cout << theatre.numberOfActors << endl;
 		cout << "Всего работников постановочной группы: ";
@@ -57,20 +63,24 @@ void Theatre::toString() {         // Функция вывода информации о театре
 		cout << "Для начала заполните все поля!" << endl;
 }
 
-/*void addStage(theatre* theatre) {  // Добавление сцены в театр
-	theatre->stages[theatre->numberOfStages] = setStage();
-	theatre->numberOfStages = theatre->numberOfStages + 1;
-	
+void Theatre::addStage() {  // Добавление сцены в театр
+	stages[numberOfStages].setStage();
+	numberOfStages = numberOfStages + 1;
 }
 
-void delStage(theatre *theatre, int numStage) {  // Удаление сцены из театра
-	if (numStage >= 0 && numStage < theatre->numberOfStages) {
-		for (int i = numStage; i < theatre->numberOfStages - 1; i++) {
-			theatre->stages[i] = theatre->stages[i + 1];
+void Theatre::addStage(char name[50], int capacity/*,  performance performances[]*/) {  // Добавление сцены в театр
+	stages[numberOfStages].setStage(name, capacity/*,  performances[]*/);
+	numberOfStages = numberOfStages + 1;
+}
+
+void Theatre::delStage(int numStage) {  // Удаление сцены из театра
+	if (numStage >= 0 && numStage < numberOfStages) {
+		for (int i = numStage; i < numberOfStages - 1; i++) {
+			stages[i] = stages[i + 1];
 		}
-		theatre->stages[theatre->numberOfStages - 1] = {};
-		theatre->numberOfStages = theatre->numberOfStages - 1;
+		stages[numberOfStages - 1] = {};
+		numberOfStages--;
 	}
 	else
-		cout << "Номер сцены должен быть в промежутке от 0 до" << theatre->numberOfStages - 1 << " (включая)." << endl;
-}*/
+		cout << "Номер сцены должен быть в промежутке от 0 до" << numberOfStages - 1 << " (включая)." << endl;
+}

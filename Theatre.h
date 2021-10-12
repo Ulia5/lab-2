@@ -2,20 +2,21 @@
 #include <malloc.h>
 #include <iostream>
 #include <stdio.h>
-//#include "Stage.h"
+#include "Stage.h"
 using namespace std;
 
-class Theatre {                              // Описание класса Театр
-	/*int numberOfStages = 0;                  // Количество сцен
-	stage stages[5] = {};                    // Сцены
-	int numberOfActors = 0;                  // Количество актеров
-	int numberOfStageDirectors = 0;          // Количество работников постановочной группы*/
-	char* nameTh = {};                       // Название театра
-	int yearOfFoundation = 0;                // Год основания
+class Theatre {                         // Описание класса Театр
+	int numberOfStages = 0;             // Количество сцен
+	Stage stages[5];                    // Сцены
+	/*int numberOfActors = 0;           // Количество актеров
+	int numberOfStageDirectors = 0;     // Количество работников постановочной группы*/
+	char* nameTh;                       // Название театра
+	int yearOfFoundation = 0;           // Год основания
 public:
 	void setTheatre();
-	void setTheatre(char*, int/*, int numberOfStages, stage stages[]*/);
+	void setTheatre(char* name, int year, int countStages, Stage** masStages);
 	void toString();
-	//void addStage(theatre* theatre);
-	//void delStage(theatre* theatre, int numStage);
+	void addStage();
+	void addStage(char name[50], int capacity/*,  performance performances[]*/);
+	void delStage(int numStage);
 };

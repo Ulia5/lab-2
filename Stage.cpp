@@ -1,56 +1,54 @@
-/*#include "Stage.h"
+#define _CRT_SECURE_NO_WARNINGS
+#include "Stage.h"
 
-stage setStage() {   // Функция заполнение полей структуры
-	stage stage = {};
-	stage.nameSt = (char*)malloc(50);
+void Stage::setStage() {   // Функция заполнение полей структуры
 	cout << "\tНазвание сцены: ";
-	gets_s(stage.nameSt, 50);
-	while (stage.nameSt == NULL) {     // Защита от неверного ввода
+	gets_s(nameSt, 50);
+	while (nameSt == NULL) {     // Защита от неверного ввода
 		cout << "Неверный формат ввода!" << endl;
-		cin >> stage.nameSt;
+		gets_s(nameSt, 50);
 	};
 	cout << "\tВместимость зала: ";
-	cin >> stage.hallCapacity;
-	while (stage.hallCapacity < 0) { // Защита от неверного ввода
-		cout << "Неверный формат ввода!" << endl;
-		cin >> stage.hallCapacity;
-	}
-	cout << "\tКоличество постановок: ";
-	cin >> stage.numberOfPerformances;
+	cin >> hallCapacity;
 	cin.get();
-	for (int i = 0; i < stage.numberOfPerformances; i++)
-			stage.performances[i] = setPerformance();
-	return stage;
+	while (hallCapacity < 0) { // Защита от неверного ввода
+		cout << "Неверный формат ввода!" << endl;
+		cin >> hallCapacity;
+		cin.get();
+	}
+	/*cout << "\tКоличество постановок: ";
+	cin >> numberOfPerformances;
+	cin.get();
+	for (int i = 0; i < numberOfPerformances; i++)
+			performances[i] = setPerformance();*/
 }
 
-stage setStage(char* nameSt, int hallCapacity, int numberOfPerformances, performance performances[]) {
-	stage stage = {};
-	stage.nameSt = nameSt;
-	stage.hallCapacity = hallCapacity;
-	stage.numberOfPerformances = numberOfPerformances;
-	for (int i = 0; i < stage.numberOfPerformances; i++)
-		stage.performances[i] = performances[i];
-	return stage;
+void Stage::setStage(char name[50], int capacity/*,  performance performances[]*/) {
+	strcpy(nameSt, name);
+	hallCapacity = capacity;
+	/*numberOfPerformances = Performances;
+	for (int i = 0; i < numberOfPerformances; i++)
+		performances[i] = performances[i];*/
 }
 
-void printStage(stage stage) { // Функция вывода информации о сцене
-	if (stage.nameSt != NULL) {
+void Stage::toString() { // Функция вывода информации о сцене
+	if (nameSt != NULL) {
 		cout << "Инфорцация о сцене ";
-		cout << stage.nameSt << ":" << endl;
+		cout << nameSt << ":" << endl;
 		cout << "\tВместимость зала: ";
-		cout << stage.hallCapacity << endl;
-		cout << "\tПостановок на сцене: ";
+		cout << hallCapacity << endl;
+		/*cout << "\tПостановок на сцене: ";
 		cout << stage.numberOfPerformances << endl;
 		for (int i = 0; i < stage.numberOfPerformances; i++) {
 			cout << "\tПостановка №" << i + 1 << ':' << endl;
 			printPerformance(stage.performances[i]);
-		}
+		}*/
 	}
 	else
 		cout << "Необходимо заполнить структуру!" << endl;
 }
 
-void addPerformance(stage *stage) { // Добавление постановки
+/*void addPerformance(stage* stage) { // Добавление постановки
 	stage->performances[stage->numberOfPerformances] = setPerformance();
 	stage->numberOfPerformances++;
 }
