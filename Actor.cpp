@@ -1,75 +1,72 @@
-/*#include "Actor.h"
+#include "Actor.h"
 
-actor setActor(theatre* jobPlace) { // Функция заполнения информации об Актере
-	actor actor = {};
-	actor.nameAct = (char*)malloc(50);
-	actor.surnameAct = (char*)malloc(50);
+void Actor::setActor(Theatre* jobPlaceNew) { // Функция заполнения информации об Актере
+	nameAct = (char*)malloc(50);
+	surnameAct = (char*)malloc(50);
 	cout << "\tИмя актера: ";
-	gets_s(actor.nameAct, 50);
+	gets_s(nameAct, 49);
 	cout << "\tФамилия актера: ";
-	gets_s(actor.surnameAct, 50);
+	gets_s(surnameAct, 49);
 	cout << "\tВозраст актера: ";
-	cin >> actor.ageAct;
+	cin >> ageAct;
 	cin.get();
-	actor.jobPlace = *jobPlace;
-	jobPlace->numberOfActors++;
-	return actor;
+	jobPlace = jobPlaceNew;
+	jobPlaceNew->addActor();
 }
 
-actor setActor(char* nameAct, char* surnameAct, int ageAct, theatre* jobPlace) {
+void Actor::setActor(char* name, char* surname, int age, Theatre* jobPlaceNew) {
 	// Функция заполнения информации об Актере(без ввода)
-	actor actor = {};
-	actor.nameAct = nameAct;
-	actor.surnameAct = surnameAct;
-	actor.ageAct = ageAct;
-	actor.jobPlace = *jobPlace;
-	jobPlace->numberOfActors++;
-	return actor;
+	nameAct = name;
+	surnameAct = surname;
+	ageAct = age;
+	jobPlace = jobPlaceNew;
+	jobPlaceNew->addActor();
 }
 
-void printActor(actor actor) { // Вывод информации об Актере
-	if (actor.nameAct != NULL) {
+void Actor::toString() { // Вывод информации об Актере
+	if (nameAct != NULL) {
 		cout << "Информация об актере:" << endl;
 		cout << "Имя и фамилия: ";
-		cout << actor.nameAct << ' ' << actor.surnameAct << endl;
+		cout << nameAct << ' ' << surnameAct << endl;
 		cout << "Возраст: ";
-		cout << actor.ageAct << endl;
+		cout << ageAct << endl;
 		cout << "Место работы: ";
-		cout << actor.jobPlace.nameTh << endl;
+		cout << jobPlace->getNameTh() << endl;
 		cout << "Количество ролей: ";
-		cout << actor.roles << endl;
-		if (actor.roles > 0) {
+		cout << roles << endl;
+		if (roles > 0) {
 			cout << "В таких постановках как: " << endl;
-			for (int i = 0; i < actor.roles; i++)
-				cout << i + 1 << ") " << actor.performanceAct[i].namePerf << endl;
+			for (int i = 0; i < roles; i++)
+				cout << i + 1 << ") " << performanceAct[i].getNamePerf() << endl;
 		}
 	}
 	else
 		cout << "Для начала заполните все поля!" << endl;
 }
 
-void addPerformanceAct(actor* actor, performance* performance) { // Добавление Постановки в список ролей
-	actor->performanceAct[actor->roles] = *performance;
-	actor->roles++;
-	performance->numberOfActors++;
+void Actor::addPerformanceAct(Performance* performance) { // Добавление Постановки в список ролей
+	performanceAct[roles] = *performance;
+	performanceAct[roles].addActor();
+	performance->addActor();
+	roles++;
 }
 
-void delPerformanceAct(actor* actor, performance* performance) { // Удаление Постановки из списка ролей
+void Actor::delPerformanceAct(Performance* performance) { // Удаление Постановки из списка ролей
 	bool flag = 0;
 	int numPerf = 0;
-	for (int i = 0; i < actor->roles; i++)
-		if (actor->performanceAct[i].namePerf == performance->namePerf) {
+	for (int i = 0; i < roles; i++)
+		if (performanceAct[i].getNamePerf() == performance->getNamePerf()) {
 			flag = true;
 			numPerf = i;
 		}
 	if (flag) {
-		for (int i = numPerf; i < actor->roles - 1; i++) {
-			actor->performanceAct[i] = actor->performanceAct[i + 1];
+		for (int i = numPerf; i < roles - 1; i++) {
+			performanceAct[i] = performanceAct[i + 1];
 		}
-		actor->performanceAct[actor->roles - 1] = {};
-		actor->roles--;
-		performance->numberOfActors--;
+		performanceAct[roles - 1] = {};
+		roles--;
+		performance->delActor();
 	}
 	else
 		cout << "Таких постановок не найдено!" << endl;
-}*/
+}

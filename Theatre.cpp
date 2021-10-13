@@ -54,9 +54,9 @@ void Theatre::toString() {         // Функция вывода информации о театре
 			stages[i].toString();
 		}
 		cout << "Всего спектаклей: " << count << endl;
-		/*cout << "Всего актеров: ";
-		cout << theatre.numberOfActors << endl;
-		cout << "Всего работников постановочной группы: ";
+		cout << "Всего актеров: ";
+		cout << numberOfActors << endl;
+		/*cout << "Всего работников постановочной группы: ";
 		cout << theatre.numberOfStageDirectors << endl;*/
 	}
 	else
@@ -68,7 +68,7 @@ void Theatre::addStage() {  // Добавление сцены в театр
 	numberOfStages = numberOfStages + 1;
 }
 
-void Theatre::addStage(char name[50], int capacity, int countPerf, Performance performances[]) {  // Добавление сцены в театр
+void Theatre::addStage(char name[50], int capacity, int countPerf, Performance* performances[]) {  // Добавление сцены в театр
 	stages[numberOfStages].setStage(name, capacity, countPerf, performances);
 	numberOfStages = numberOfStages + 1;
 }
@@ -83,4 +83,16 @@ void Theatre::delStage(int numStage) {  // Удаление сцены из театра
 	}
 	else
 		cout << "Номер сцены должен быть в промежутке от 0 до" << numberOfStages - 1 << " (включая)." << endl;
+}
+
+void Theatre::addActor() {
+	numberOfActors++;
+}
+
+char* Theatre::getNameTh() {
+	return nameTh;
+}
+
+Stage* Theatre::getStages(int number) {
+	return &stages[number];
 }

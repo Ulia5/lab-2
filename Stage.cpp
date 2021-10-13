@@ -20,10 +20,10 @@ void Stage::setStage() {   // Функция заполнение полей структуры
 	cin >> numberOfPerformances;
 	cin.get();
 	for (int i = 0; i < numberOfPerformances; i++)
-			performances[i].setPerformance();
+			performances[i]->setPerformance();
 }
 
-void Stage::setStage(char name[50], int capacity, int countPerf, Performance performancesNew[]) {
+void Stage::setStage(char name[50], int capacity, int countPerf, Performance* performancesNew[]) {
 	strcpy(nameSt, name);
 	hallCapacity = capacity;
 	numberOfPerformances = countPerf;
@@ -41,7 +41,7 @@ void Stage::toString() { // Функция вывода информации о сцене
 		cout << numberOfPerformances << endl;
 		for (int i = 0; i < numberOfPerformances; i++) {
 			cout << "\tПостановка №" << i + 1 << ':' << endl;
-			performances[i].toString();
+			performances[i]->toString();
 		}
 	}
 	else
@@ -49,12 +49,12 @@ void Stage::toString() { // Функция вывода информации о сцене
 }
 
 void Stage::addPerformance() { // Добавление постановки
-	performances[numberOfPerformances].setPerformance();
+	performances[numberOfPerformances]->setPerformance();
 	numberOfPerformances++;
 }
 
 void Stage::addPerformance(char* namePerf, int performanceTime, int ageRestrictions) { // Добавление постановки
-	performances[numberOfPerformances].setPerformance(namePerf, performanceTime, ageRestrictions);
+	performances[numberOfPerformances]->setPerformance(namePerf, performanceTime, ageRestrictions);
 	numberOfPerformances++;
 }
 
@@ -72,4 +72,8 @@ void Stage::delPerformance(int numPerformance) {  // Удаление постановки
 
 int Stage::getNumberOfPerformances() {
 	return numberOfPerformances;
+}
+
+Performance* Stage::getPerformance(int number) {
+	return performances[number];
 }

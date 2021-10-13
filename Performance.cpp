@@ -53,3 +53,15 @@ void Performance::toString() { // Вывод информации о постановке
 	else
 		cout << "Необходимо заполнить структуру!" << endl;
 }
+
+char* Performance::getNamePerf() {
+	return namePerf;
+}
+
+void Performance::addActor() {
+	numberOfActors++;
+}
+
+void Performance::delActor() {
+	numberOfActors--;
+}
