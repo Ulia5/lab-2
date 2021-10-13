@@ -14,9 +14,9 @@ public:
 	void setPerformance();
 	void setPerformance(char* namePerf, int performanceTime, int ageRestrictions);
 	void toString();
-	void changePerformanceTime(int time);
-	void changeAgeRestrictions(int age);
 	char* getNamePerf();
 	void addActor();
+	void addStageDirector();
 	void delActor();
+	void delStageDirector();
 };

@@ -2,7 +2,7 @@
 #include <iostream>
 #include "Theatre.h"
 #include "Actor.h"
-/*#include "StageDirector.h"*/
+#include "StageDirector.h"
 #include <locale>
 #include <windows.h>
 
@@ -16,6 +16,7 @@ int main()
 	Performance* performances[2]; // Создаем объекты типа Постановка
 	Performance* performances0[1];
 	Actor actors[2]; // Создаем объекты типа Актер
+	StageDirector stageDirectors[2]; // Создаем объекты типа Работник сцены
 	for (int i = 0; i < 2; i++) {
 		stages[i] = new Stage;
 	}
@@ -27,6 +28,8 @@ int main()
 	}
 	actors[0].setActor((char*)"Иван", (char*)"Иванов", 32, &theatres[0]);
 	actors[1].setActor((char*)"Петр", (char*)"Петров", 32, &theatres[0]);
+	stageDirectors[0].setStageDirector((char*)"Игорь", (char*)"Иванов", 23, &theatres[0]);
+	stageDirectors[1].setStageDirector((char*)"Павел", (char*)"Петров", 30, &theatres[0]);
 	performances[0]->setPerformance((char*)"Игра", 200, 2020);
 	performances[1]->setPerformance((char*)"Мир", 220, 2000);
 	performances0[0]->setPerformance((char*)"Лира", 120, 2021);
@@ -36,11 +39,16 @@ int main()
 	theatres[0].toString();
 	actors[0].addPerformanceAct(performances0[0]);
 	actors[0].addPerformanceAct(performances[0]);
+	stageDirectors[0].addPerformanceDir(performances0[0]);
+	stageDirectors[0].addPerformanceDir(performances[0]);
 	theatres[0].toString();
 	actors[0].toString();
+	stageDirectors[0].toString();
 	actors[0].delPerformanceAct(performances0[0]);
+	stageDirectors[0].delPerformanceDir(performances0[0]);
 	theatres[0].toString();
 	actors[0].toString();
+	stageDirectors[0].toString();
 	delete[] theatres;
 	for (int i = 0; i < 2; i++) {
 		delete stages[i];

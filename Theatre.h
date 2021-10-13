@@ -20,6 +20,7 @@ public:
 	void addStage(char name[50], int capacity, int countPerf, Performance* performances[]);
 	void delStage(int numStage);
 	void addActor();
+	void addStageDirector();
 	char* getNameTh();
 	Stage* getStages(int number);
 };

@@ -65,3 +65,11 @@ void Performance::addActor() {
 void Performance::delActor() {
 	numberOfActors--;
 }
+
+void Performance::addStageDirector() {
+	numberOfStageDirectors++;
+}
+
+void Performance::delStageDirector() {
+	numberOfStageDirectors--;
+}

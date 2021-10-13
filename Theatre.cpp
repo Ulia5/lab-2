@@ -56,8 +56,8 @@ void Theatre::toString() {         // Функция вывода информации о театре
 		cout << "Всего спектаклей: " << count << endl;
 		cout << "Всего актеров: ";
 		cout << numberOfActors << endl;
-		/*cout << "Всего работников постановочной группы: ";
-		cout << theatre.numberOfStageDirectors << endl;*/
+		cout << "Всего работников постановочной группы: ";
+		cout << numberOfStageDirectors << endl;
 	}
 	else
 		cout << "Для начала заполните все поля!" << endl;
@@ -89,6 +89,9 @@ void Theatre::addActor() {
 	numberOfActors++;
 }
 
+void Theatre::addStageDirector() {
+	numberOfStageDirectors++;
+}
 char* Theatre::getNameTh() {
 	return nameTh;
 }

@@ -1,75 +1,71 @@
-/*#include "StageDirector.h"
-
-stageDirector setStageDirector(theatre* jobPlace) { // Функция заполнения информации о Работнике постановочной группы
-	stageDirector stageDirector = {};
-	stageDirector.nameDir = (char*)malloc(50);
-	stageDirector.surnameDir = (char*)malloc(50);
+#include "StageDirector.h"
+void StageDirector::setStageDirector(Theatre* jobPlaceNew) { // Функция заполнения информации о Работнике постановочной группы
+	nameDir = (char*)malloc(50);
+	surnameDir = (char*)malloc(50);
 	cout << "\tИмя работника постановочной группы: ";
-	gets_s(stageDirector.nameDir, 50);
+	gets_s(nameDir, 49);
 	cout << "\tФамилия работника постановочной группы: ";
-	gets_s(stageDirector.surnameDir, 50);
+	gets_s(surnameDir, 49);
 	cout << "\tВозраст работника постановочной группы: ";
-	cin >> stageDirector.ageDir;
+	cin >> ageDir;
 	cin.get();
-	stageDirector.jobPlace = *jobPlace;
-	jobPlace->numberOfStageDirectors++;
-	return stageDirector;
+	jobPlace = jobPlaceNew;
+	jobPlaceNew->addStageDirector();
 }
 
-stageDirector setStageDirector(char* nameDir, char* surnameDir, int ageDir, theatre* jobPlace) {
+void StageDirector::setStageDirector(char* name, char* surname, int age, Theatre* jobPlaceNew) {
 	// Функция заполнения информации о Работнике постановочной группы(без ввода)
-	stageDirector stageDirector = {};
-	stageDirector.nameDir = nameDir;
-	stageDirector.surnameDir = surnameDir;
-	stageDirector.ageDir = ageDir;
-	stageDirector.jobPlace = *jobPlace;
-	jobPlace->numberOfStageDirectors++;
-	return stageDirector;
+	nameDir = name;
+	surnameDir = surname;
+	ageDir = age;
+	jobPlace = jobPlaceNew;
+	jobPlaceNew->addStageDirector();
 }
 
-void printStageDirector(stageDirector stageDirector) { // Вывод информации о Работнике постановочной группы
-	if (stageDirector.nameDir != NULL) {
+void StageDirector::toString() { // Вывод информации о Работнике постановочной группы
+	if (nameDir != NULL) {
 		cout << "Информация о работнике постановочной группы:" << endl;
 		cout << "Имя и фамилия: ";
-		cout << stageDirector.nameDir << ' ' << stageDirector.surnameDir << endl;
+		cout << nameDir << ' ' << surnameDir << endl;
 		cout << "Возраст: ";
-		cout << stageDirector.ageDir << endl;
+		cout << ageDir << endl;
 		cout << "Место работы: ";
-		cout << stageDirector.jobPlace.nameTh << endl;
+		cout << jobPlace->getNameTh() << endl;
 		cout << "Количество работ: ";
-		cout << stageDirector.numProjects << endl;
-		if (stageDirector.numProjects > 0) {
+		cout << numProjects << endl;
+		if (numProjects > 0) {
 			cout << "Такие постановки как: " << endl;
-			for (int i = 0; i < stageDirector.numProjects; i++)
-				cout << i + 1 << ") " << stageDirector.performanceDir[i].namePerf << endl;
+			for (int i = 0; i < numProjects; i++)
+				cout << i + 1 << ") " << performanceDir[i].getNamePerf() << endl;
 		}
 	}
 	else
 		cout << "Для начала заполните все поля!" << endl;
 }
 
-void addPerformanceDir(stageDirector* stageDirector, performance* performance) { // Добавление Постановки в список работ
-	stageDirector->performanceDir[stageDirector->numProjects] = *performance;
-	stageDirector->numProjects++;
-	performance->numberOfStageDirectors++;
+void StageDirector::addPerformanceDir(Performance* performance) { // Добавление Постановки в список работ
+	performanceDir[numProjects] = *performance;
+	performanceDir[numProjects].addStageDirector();
+	performance->addStageDirector();
+	numProjects++;
 }
 
-void delPerformanceDir(stageDirector* stageDirector, performance* performance) { // Удаление Постановки из списка работ
+void StageDirector::delPerformanceDir(Performance* performance) { // Удаление Постановки из списка работ
 	bool flag = 0;
 	int numPerf = 0;
-	for (int i = 0; i < stageDirector->numProjects; i++)
-		if (stageDirector->performanceDir[i].namePerf == performance->namePerf) {
+	for (int i = 0; i < numProjects; i++)
+		if (performanceDir[i].getNamePerf() == performance->getNamePerf()) {
 			flag = true;
 			numPerf = i;
 		}
 	if (flag) {
-		for (int i = numPerf; i < stageDirector->numProjects - 1; i++) {
-			stageDirector->performanceDir[i] = stageDirector->performanceDir[i + 1];
+		for (int i = numPerf; i < numProjects - 1; i++) {
+			performanceDir[i] = performanceDir[i + 1];
 		}
-		stageDirector->performanceDir[stageDirector->numProjects - 1] = {};
-		stageDirector->numProjects--;
-		performance->numberOfStageDirectors--;
+		performanceDir[numProjects - 1] = {};
+		numProjects--;
+		performance->delStageDirector();
 	}
 	else
 		cout << "Таких постановок не найдено!" << endl;
-}*/
+}

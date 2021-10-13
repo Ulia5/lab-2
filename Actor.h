@@ -11,7 +11,7 @@ class Actor {             // Объявление структуры Актер
 	int ageAct = 0;        // Возраст актера
 	int roles = 0;         // Количество ролей
 	Theatre* jobPlace; // Место работы
-	Performance performanceAct[50] = {}; // Постановки с участием данного актера
+	Performance performanceAct[50]; // Постановки с участием данного актера
 public:
 	void setActor(Theatre* jobPlace);
 	void setActor(char* name, char* surname, int age, Theatre* jobPlaceNew);
