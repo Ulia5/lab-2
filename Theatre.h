@@ -17,6 +17,6 @@ public:
 	void setTheatre(char* name, int year, int countStages, Stage** masStages);
 	void toString();
 	void addStage();
-	void addStage(char name[50], int capacity/*,  performance performances[]*/);
+	void addStage(char name[50], int capacity, int countPerf, Performance performances[]);
 	void delStage(int numStage);
 };

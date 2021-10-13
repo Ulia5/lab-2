@@ -12,19 +12,27 @@ int main()
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 	Theatre* theatres = new Theatre[3]; // Создаем объекты типа Театра
-	Stage* stages[3];
-	for (int i = 0; i < 3; i++) {
+	Stage* stages[2]; // Создаем объекты типа Сцена
+	Performance performances1[2]; // Создаем объекты типа Постановка
+	Performance performances2[2];
+	for (int i = 0; i < 2; i++) {
 		stages[i] = new Stage;
 	}
-	stages[1]->setStage();
-	stages[0]->setStage((char*)"Большая сцена", 500);
-	stages[2]->setStage((char*)"Средняя сцена", 300);
+	performances1[0].setPerformance();
+	performances1[1].setPerformance((char*)"Любовь и голуби", 220, 2000);
+	performances2[0].setPerformance((char*)"Соб@ки", 180, 2007);
+	performances2[1].setPerformance((char*)"Ромео и Джульета", 180, 2002);
+	stages[0]->setStage();
+	stages[1]->setStage((char*)"Большая сцена", 500, 2, performances1);
 	theatres[0].setTheatre();
-	theatres[1].setTheatre((char*)"Драматический театр", 1999, 3, stages);
+	theatres[1].setTheatre((char*)"Драматический театр", 1999, 2, stages);
 	theatres[0].toString();
 	theatres[1].toString();
 	theatres[0].addStage();
-	theatres[0].addStage((char*)"Средняя сцена", 200);
+	stages[0]->addPerformance();
+	stages[0]->addPerformance((char*)"Лир", 220, 2000);
+	theatres[0].addStage((char*)"Средняя сцена", 200, 2, performances2);
+	stages[0]->delPerformance(0);
 	theatres[1].delStage(1);
 	theatres[0].toString();
 	theatres[1].toString();

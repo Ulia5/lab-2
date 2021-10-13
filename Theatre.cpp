@@ -49,12 +49,12 @@ void Theatre::toString() {         // Функция вывода информации о театре
 		cout << numberOfStages << endl;
 		int count = 0;
 		for (int i = 0; i < numberOfStages; i++) {
-			//count += stages[i].numberOfPerformances;
+			count += stages[i].getNumberOfPerformances();
 			cout << "Сцена №" << i + 1 << ':' << endl;
 			stages[i].toString();
 		}
-		/*cout << "Всего спектаклей: " << count << endl;
-		cout << "Всего актеров: ";
+		cout << "Всего спектаклей: " << count << endl;
+		/*cout << "Всего актеров: ";
 		cout << theatre.numberOfActors << endl;
 		cout << "Всего работников постановочной группы: ";
 		cout << theatre.numberOfStageDirectors << endl;*/
@@ -68,8 +68,8 @@ void Theatre::addStage() {  // Добавление сцены в театр
 	numberOfStages = numberOfStages + 1;
 }
 
-void Theatre::addStage(char name[50], int capacity/*,  performance performances[]*/) {  // Добавление сцены в театр
-	stages[numberOfStages].setStage(name, capacity/*,  performances[]*/);
+void Theatre::addStage(char name[50], int capacity, int countPerf, Performance performances[]) {  // Добавление сцены в театр
+	stages[numberOfStages].setStage(name, capacity, countPerf, performances);
 	numberOfStages = numberOfStages + 1;
 }
 
