@@ -16,4 +16,7 @@ public:
 	void toString();
 	void changePerformanceTime(int time);
 	void changeAgeRestrictions(int age);
+	char* getNamePerf();
+	void addActor();
+	void delActor();
 };
