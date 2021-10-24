@@ -7,6 +7,7 @@ public class Theatre {
 	//private int numberOfStageDirectors = 0;     // Количество работников постановочной группы
 	private String nameTh;                        // Название театра
 	private int yearOfFoundation = 0;             // Год основания
+	private int numberOfPerformance = 0;
 
 	public Theatre() {                            // Конструктор Театра
 		this.nameTh = toWriteName();
@@ -35,6 +36,10 @@ public class Theatre {
 		return numberOfStages;
 	}
 
+	public Stage getStage(int num) {
+		return stages[num];
+	}
+
 	public void toPrint() {                                   // Вывод информации о Театре
 		if (!getNameTh().isEmpty() && getYearOfFoundation() != 0) {
 			System.out.print("Название: ");
@@ -43,13 +48,16 @@ public class Theatre {
 			System.out.println(getYearOfFoundation());
 			System.out.print("Количество сцен: ");
 			System.out.println(getNumberOfStages());
+			System.out.println();
 			int count = 0;
 		    for (int i = 0; i < getNumberOfStages(); i++) {
-				System.out.println("Сцена №" + (i + 1) + ':');
-				stages[i].toPrint();
+				System.out.println("\tСцена №" + (i + 1) + ':');
+				getStage(i).toPrint();
+				count += getStage(i).getNumberOfPerformances();
 			}
 			System.out.println();
 		}
+
 	}
 
 	public void addStage() {                                  // Добавление сцены в Театр
@@ -78,12 +86,10 @@ public class Theatre {
 		for (int i = numStage; i < getNumberOfStages() - 1; i++) {
 			stages[i] = stages[i + 1];
 		}
-		stages[getNumberOfStages() - 1] = new Stage("", 0);
 		decreaseNumberOfStages();
 	}
 	else
 		System.out.println("Номер сцены должен быть в промежутке от 0 до" + (numberOfStages - 1) + " (включая).");
-
 	}
 
 	private String toWriteName() {                 // Ввод названия Театра
@@ -132,11 +138,11 @@ public class Theatre {
 		return stages;
 	}
 
-	private void increasingNumberOfStages() {
+	private void increasingNumberOfStages() {   // Увеличение кол-ва сцен
 		numberOfStages++;
 	}
 
-	private void decreaseNumberOfStages() {
+	private void decreaseNumberOfStages() {     // Уменьшение числа сцен
 		numberOfStages--;
 	}
 }
