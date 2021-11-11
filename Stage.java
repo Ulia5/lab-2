@@ -1,12 +1,12 @@
 import java.util.Scanner;
 
-public class Stage {                                              // Объявление класса Сцена
-	private String nameSt;                                        // Название сцены
-	private int hallCapacity = 0;                                 // Вместимость зала
-	private int numberOfPerformances = 0;                         // Количество постановок
-	private Performance performances[] = new Performance[10];     // Список постановок
+public class Stage {                                              // РћР±СЉСЏРІР»РµРЅРёРµ РєР»Р°СЃСЃР° РЎС†РµРЅР°
+	private String nameSt;                                        // РќР°Р·РІР°РЅРёРµ СЃС†РµРЅС‹
+	private int hallCapacity = 0;                                 // Р’РјРµСЃС‚РёРјРѕСЃС‚СЊ Р·Р°Р»Р°
+	private int numberOfPerformances = 0;                         // РљРѕР»РёС‡РµСЃС‚РІРѕ РїРѕСЃС‚Р°РЅРѕРІРѕРє
+	private Performance performances[] = new Performance[10];     // РЎРїРёСЃРѕРє РїРѕСЃС‚Р°РЅРѕРІРѕРє
 
-	public Stage() {                                              // Конструктор Сцены
+	public Stage() {                                              // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РЎС†РµРЅС‹
 		this.nameSt = toWriteName();
 		this.hallCapacity = toWriteCapacity();
 		this.numberOfPerformances = toWriteNumberOfPerformance();
@@ -14,59 +14,59 @@ public class Stage {                                              // Объявление 
 		System.out.println();
 	}
 
-	public Stage(String name, int capacity, int numberPerf, Performance performances[]) {    // Конструктор с параметром
+	public Stage(String name, int capacity, int numberPerf, Performance performances[]) {    // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂРѕРј
 		this.nameSt = name;
 		this.hallCapacity = capacity;
 		this.numberOfPerformances = numberPerf;
 		this.performances = performances;
 	}
 
-	public String getNameSt() {                  // Возвращение названия Сцены
+	public String getNameSt() {                  // Р’РѕР·РІСЂР°С‰РµРЅРёРµ РЅР°Р·РІР°РЅРёСЏ РЎС†РµРЅС‹
 		return nameSt;
 	}
 
-	public int getHallCapacity() {               // Возвращение вместимости зала
+	public int getHallCapacity() {               // Р’РѕР·РІСЂР°С‰РµРЅРёРµ РІРјРµСЃС‚РёРјРѕСЃС‚Рё Р·Р°Р»Р°
 		return hallCapacity;
 	}
 
-	public int getNumberOfPerformances() {       // Возвращение кол-ва постановок
+	public int getNumberOfPerformances() {       // Р’РѕР·РІСЂР°С‰РµРЅРёРµ РєРѕР»-РІР° РїРѕСЃС‚Р°РЅРѕРІРѕРє
 		return numberOfPerformances;
 	}
 
-	public Performance getPerformance(int num) { // Возвращение Постановки
+	public Performance getPerformance(int num) { // Р’РѕР·РІСЂР°С‰РµРЅРёРµ РџРѕСЃС‚Р°РЅРѕРІРєРё
 		return performances[num];
 	}
 
-	public void toPrint() {                      // Вывод информации о Сцене
+	public void toPrint() {                      // Р’С‹РІРѕРґ РёРЅС„РѕСЂРјР°С†РёРё Рѕ РЎС†РµРЅРµ
 		if (!getNameSt().isEmpty() && getHallCapacity() != 0) {
-			System.out.print("\tНазвание: ");
+			System.out.print("\tРќР°Р·РІР°РЅРёРµ: ");
 			System.out.println(getNameSt());
-			System.out.print("\tВместимость зала: ");
+			System.out.print("\tР’РјРµСЃС‚РёРјРѕСЃС‚СЊ Р·Р°Р»Р°: ");
 			System.out.println(getHallCapacity());
-			System.out.print("\tПостановок на сцене: ");
+			System.out.print("\tРџРѕСЃС‚Р°РЅРѕРІРѕРє РЅР° СЃС†РµРЅРµ: ");
 			System.out.println(getNumberOfPerformances());
 			System.out.println();
 			for (int i = 0; i < getNumberOfPerformances(); i++) {
-				System.out.println("\tПостановка №" + (i + 1) + ':');
+				System.out.println("\tРџРѕСЃС‚Р°РЅРѕРІРєР° в„–" + (i + 1) + ':');
 				getPerformance(i).toPrint();
 			}
 		}
 		else
-			System.out.println("Необходимо заполнить структуру!");
+			System.out.println("РќРµРѕР±С…РѕРґРёРјРѕ Р·Р°РїРѕР»РЅРёС‚СЊ СЃС‚СЂСѓРєС‚СѓСЂСѓ!");
 		System.out.println();
 	}
 
-	public void addPerformance() {                                      // Добавление постановки в Сцену
+	public void addPerformance() {                                      // Р”РѕР±Р°РІР»РµРЅРёРµ РїРѕСЃС‚Р°РЅРѕРІРєРё РІ РЎС†РµРЅСѓ
 		if(getNumberOfPerformances() < 10) { 
 			performances[getNumberOfPerformances()] = new Performance();
 			increasingNumberOfPerformances();
 		}
 		else 
-			System.out.println("Максимально допустимое значение кол-ва Постановок: 10!");
+			System.out.println("РњР°РєСЃРёРјР°Р»СЊРЅРѕ РґРѕРїСѓСЃС‚РёРјРѕРµ Р·РЅР°С‡РµРЅРёРµ РєРѕР»-РІР° РџРѕСЃС‚Р°РЅРѕРІРѕРє: 10!");
 		System.out.println();
 	}
 
-	public void addPerformance(int count, Performance performance[]) {  //  Добавление постановки в Сцену
+	public void addPerformance(int count, Performance performance[]) {  //  Р”РѕР±Р°РІР»РµРЅРёРµ РїРѕСЃС‚Р°РЅРѕРІРєРё РІ РЎС†РµРЅСѓ
 		if(getNumberOfPerformances() < 10) {
 			for(int i = 0; i < count; i++) {
 				performances[getNumberOfPerformances()] = performance[i];
@@ -74,7 +74,7 @@ public class Stage {                                              // Объявление 
 			}
 		}
 		else 
-			System.out.println("Максимально допустимое значение кол-ва Постановок: 10!");
+			System.out.println("РњР°РєСЃРёРјР°Р»СЊРЅРѕ РґРѕРїСѓСЃС‚РёРјРѕРµ Р·РЅР°С‡РµРЅРёРµ РєРѕР»-РІР° РџРѕСЃС‚Р°РЅРѕРІРѕРє: 10!");
 	}
 
 	public void delPerformance(int numPerformance) {
@@ -85,47 +85,47 @@ public class Stage {                                              // Объявление 
 		decreaseNumberOfPerformances();
 	}
 	else
-		System.out.println("Номер постановки должен быть в промежутке от 0 до" + (getNumberOfPerformances() - 1) + " (включая).");
+		System.out.println("РќРѕРјРµСЂ РїРѕСЃС‚Р°РЅРѕРІРєРё РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РІ РїСЂРѕРјРµР¶СѓС‚РєРµ РѕС‚ 0 РґРѕ" + (getNumberOfPerformances() - 1) + " (РІРєР»СЋС‡Р°СЏ).");
 	}
 
-	private String toWriteName() {                         // Ввод названия Сцены;
-		System.out.print("Название сцены: ");
+	private String toWriteName() {                         // Р’РІРѕРґ РЅР°Р·РІР°РЅРёСЏ РЎС†РµРЅС‹;
+		System.out.print("РќР°Р·РІР°РЅРёРµ СЃС†РµРЅС‹: ");
 		Scanner console = new Scanner(System.in);
 		String name = console.nextLine();
-		while (name.isEmpty()) {                           // Защита от неверного ввода
-			System.out.println("Неверный формат ввода!");
+		while (name.isEmpty()) {                           // Р—Р°С‰РёС‚Р° РѕС‚ РЅРµРІРµСЂРЅРѕРіРѕ РІРІРѕРґР°
+			System.out.println("РќРµРІРµСЂРЅС‹Р№ С„РѕСЂРјР°С‚ РІРІРѕРґР°!");
 			name = console.nextLine();
 		}
 		return name;
 	}
 
-	private int toWriteCapacity() {                        // Ввод вместимости зала
-		System.out.print("\tВместимость зала: ");
+	private int toWriteCapacity() {                        // Р’РІРѕРґ РІРјРµСЃС‚РёРјРѕСЃС‚Рё Р·Р°Р»Р°
+		System.out.print("\tР’РјРµСЃС‚РёРјРѕСЃС‚СЊ Р·Р°Р»Р°: ");
 		Scanner console = new Scanner(System.in);
 		int capacity = console.nextInt();
 		console.nextLine();
-		while (capacity < 0) {                             // Защита от неверного ввода
-			System.out.println("\tНеверный формат ввода!");
+		while (capacity < 0) {                             // Р—Р°С‰РёС‚Р° РѕС‚ РЅРµРІРµСЂРЅРѕРіРѕ РІРІРѕРґР°
+			System.out.println("\tРќРµРІРµСЂРЅС‹Р№ С„РѕСЂРјР°С‚ РІРІРѕРґР°!");
 			capacity = console.nextInt();
 			console.nextLine();
 		}
 		return capacity;
 	}
 
-	private int toWriteNumberOfPerformance() {             // Ввод кол-ва Постановок
-		System.out.print("\tВместимость зала: ");
+	private int toWriteNumberOfPerformance() {             // Р’РІРѕРґ РєРѕР»-РІР° РџРѕСЃС‚Р°РЅРѕРІРѕРє
+		System.out.print("\tР’РјРµСЃС‚РёРјРѕСЃС‚СЊ Р·Р°Р»Р°: ");
 		Scanner console = new Scanner(System.in);
 		int numberOfPerformances = console.nextInt();
 		console.nextLine();
-		while (numberOfPerformances < 0 || numberOfPerformances > 50) { // Защита от неверного ввода
-			System.out.println("Неверный формат ввода!");
+		while (numberOfPerformances < 0 || numberOfPerformances > 50) { // Р—Р°С‰РёС‚Р° РѕС‚ РЅРµРІРµСЂРЅРѕРіРѕ РІРІРѕРґР°
+			System.out.println("РќРµРІРµСЂРЅС‹Р№ С„РѕСЂРјР°С‚ РІРІРѕРґР°!");
 			numberOfPerformances = console.nextInt();
 			console.nextLine();
 		}
 		return numberOfPerformances;
 	}
 
-	private Performance[] toWritePerformance() {      // Ввод Постановок
+	private Performance[] toWritePerformance() {      // Р’РІРѕРґ РџРѕСЃС‚Р°РЅРѕРІРѕРє
 		Performance performances[] = new Performance[getNumberOfPerformances()];
 		for (int i = 0; i < getNumberOfPerformances(); i++) {
 			performances[i] = new Performance();
@@ -133,11 +133,11 @@ public class Stage {                                              // Объявление 
 		return performances;
 	}
 
-	private void increasingNumberOfPerformances() {   // Увеличение кол-ва Постановок
+	private void increasingNumberOfPerformances() {   // РЈРІРµР»РёС‡РµРЅРёРµ РєРѕР»-РІР° РџРѕСЃС‚Р°РЅРѕРІРѕРє
 		numberOfPerformances++;
 	}
 
-	private void decreaseNumberOfPerformances() {     // Уменьшение числа Постановок
+	private void decreaseNumberOfPerformances() {     // РЈРјРµРЅСЊС€РµРЅРёРµ С‡РёСЃР»Р° РџРѕСЃС‚Р°РЅРѕРІРѕРє
 		numberOfPerformances--;
 	}
 }
