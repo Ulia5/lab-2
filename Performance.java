@@ -1,89 +1,101 @@
 import java.util.Scanner;
 
 public class Performance {
-	private String namePerf;                   // РќР°Р·РІР°РЅРёРµ РџРѕСЃС‚Р°РЅРѕРІРєРё
-	private int perfomanceTime = 0;            // Р’СЂРµРјСЏ РџРѕСЃС‚Р°РЅРѕРІРєРё (РІ РјРёРЅСѓС‚Р°С…)
-	private int ageRestrictions = 0;           // Р“РѕРґ РїСЂРµРјСЊРµСЂС‹
-	//private int numberOfActors = 0;          // РљРѕР»РёС‡РµСЃС‚РІРѕ Р°РєС‚РµСЂРѕРІ РІ РџРѕСЃС‚Р°РЅРѕРІРєРµ
-	//private int numberOfStageDirectors = 0;  // РљРѕР»РёС‡РµСЃС‚РІРѕ СЂР°Р±РѕС‚РЅРёРєРѕРІ РџРѕСЃС‚Р°РЅРѕРІРѕС‡РЅРѕР№ РіСЂСѓРїРїС‹ РІ РїРѕСЃС‚Р°РЅРѕРІРєРµ
+	private String namePerf;                   // Название Постановки
+	private int perfomanceTime = 0;            // Время Постановки (в минутах)
+	private int ageRestrictions = 0;           // Год премьеры
+	private int numberOfActors = 0;          // Количество актеров в Постановке
+	//private int numberOfStageDirectors = 0;  // Количество работников Постановочной группы в постановке
 
-	public Performance() {                                 // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РџРѕСЃС‚Р°РЅРѕРІРєРё
+	public Performance() {                                 // Конструктор Постановки
 		this.namePerf = toWriteName();
 		this.perfomanceTime = toWritePerformanceTime();
 		this.ageRestrictions = toWriteAgeRestrictions();
 		System.out.println();
 	}
 
-	public Performance(String name, int time, int age) {   // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂРѕРј
+	public Performance(String name, int time, int age) {   // Конструктор с параметром
 		this.namePerf = name;
 		this.perfomanceTime = time;
 		this.ageRestrictions = age;
 	}
 
-	public String getNamePerf() {                          // Р’РѕР·РІСЂР°С‰РµРЅРёРµ РЅР°Р·РІР°РЅРёСЏ РџРѕСЃС‚Р°РЅРѕРІРєРё
+	public String getNamePerf() {                          // Возвращение названия Постановки
 		return namePerf;
 	}
 
-	public int getPerformanceTime() {                      // Р’РѕР·РІСЂР°С‰РµРЅРёРµ РІСЂРµРјРµРЅРё РџРѕСЃС‚Р°РЅРѕРІРєРё 
+	public int getPerformanceTime() {                      // Возвращение времени Постановки 
 		return perfomanceTime;
 	}
 
-	public int getAgeRegistration() {                      // Р’РѕР·РІСЂР°РµС‰РЅРёРµ РіРѕРґР° РїСЂРµРјСЊРµСЂС‹ РџРѕСЃС‚Р°РЅРѕРІРєРё
+	public int getAgeRegistration() {                      // Возвраещние года премьеры Постановки
 		return ageRestrictions;
 	}
 
-	public void toPrint() {                                // Р’С‹РІРѕРґ РёРЅС„РѕСЂРјР°С†РёРё Рѕ РїРѕСЃС‚Р°РЅРѕРІРєРµ
+	public int getNumberOfActors() {
+		return numberOfActors;
+	}
+
+	public void toPrint() {     // Вывод информации о постановке
 		if (!getNamePerf().isEmpty() && getPerformanceTime() != 0 && getAgeRegistration() != 0) {
-		System.out.print("\t\tРќР°РёРјРµРЅРѕРІР°РЅРёРµ РїРѕСЃС‚Р°РЅРѕРІРєРё: ");
+		System.out.print("\t\tНаименование постановки: ");
 		System.out.println(getNamePerf());
-		System.out.print("\t\tР’СЂРµРјСЏ РїРѕСЃС‚Р°РЅРѕРІРєРё (РІ РјРёРЅСѓС‚Р°С…): ");
+		System.out.print("\t\tВремя постановки (в минутах): ");
 		System.out.println(getPerformanceTime());
-		System.out.print("\t\tР“РѕРґ РїСЂРµРјСЊРµСЂС‹: ");
+		System.out.print("\t\tГод премьеры: ");
 		System.out.println(getAgeRegistration());
-		/*System.out.print("РђРєС‚РµСЂРѕРІ РІ РїРѕСЃС‚Р°РЅРѕРІРєРµ: ");
+		System.out.print("\t\tАктеров в постановке: ");
 		System.out.println(getNumberOfActors());
-		System.out.print("Р Р°Р±РѕС‚РЅРёРєРѕРІ РїРѕСЃС‚Р°РЅРѕРІРѕС‡РЅРѕР№ РіСЂСѓРїРїС‹ РІ РїРѕСЃС‚Р°РЅРѕРІРєРµ: ");
+		/*System.out.print("Работников постановочной группы в постановке: ");
 		System.out.println(getNumberOfStageDirectors());*/
 		}
 		else
-			System.out.println("РќРµРѕР±С…РѕРґРёРјРѕ Р·Р°РїРѕР»РЅРёС‚СЊ СЃС‚СЂСѓРєС‚СѓСЂСѓ!");
+			System.out.println("Необходимо заполнить структуру!");
 		System.out.println();
 	}
 
-	private String toWriteName() {                         // Р’РІРѕРґ РЅР°Р·РІР°РЅРёСЏ РџРѕСЃС‚Р°РЅРѕРІРєРё
-		System.out.print("\t\tРќР°Р·РІР°РЅРёРµ РџРѕСЃС‚Р°РЅРѕРІРєРё: ");
+	private String toWriteName() {                         // Ввод названия Постановки
+		System.out.print("\t\tНазвание Постановки: ");
 		Scanner console = new Scanner(System.in);
 		String name = console.nextLine();
-		while (name.isEmpty()) {                           // Р—Р°С‰РёС‚Р° РѕС‚ РЅРµРІРµСЂРЅРѕРіРѕ РІРІРѕРґР°
-			System.out.println("РќРµРІРµСЂРЅС‹Р№ С„РѕСЂРјР°С‚ РІРІРѕРґР°!");
+		while (name.isEmpty()) {                           // Защита от неверного ввода
+			System.out.println("Неверный формат ввода!");
 			name = console.nextLine();
 		}
 		return name;
 	}
 
-	private int toWritePerformanceTime() {                 // Р’РІРѕРґ РІСЂРµРјРµРЅРё РџРѕСЃС‚Р°РЅРѕРІРєРё 
-		System.out.print("\t\tР’СЂРµРјСЏ РїРѕСЃС‚Р°РЅРѕРІРєРё (РІ РјРёРЅСѓС‚Р°С…): ");
+	private int toWritePerformanceTime() {                 // Ввод времени Постановки 
+		System.out.print("\t\tВремя постановки (в минутах): ");
 		Scanner console = new Scanner(System.in);
 		int performanceTime = console.nextInt();
 		console.nextLine();
-		while (performanceTime < 0) {                      // Р—Р°С‰РёС‚Р° РѕС‚ РЅРµРІРµСЂРЅРѕРіРѕ РІРІРѕРґР°
-			System.out.println("РќРµРІРµСЂРЅС‹Р№ С„РѕСЂРјР°С‚ РІРІРѕРґР°!");
+		while (performanceTime < 0) {                      // Защита от неверного ввода
+			System.out.println("Неверный формат ввода!");
 			performanceTime = console.nextInt();
 			console.nextLine();
 		}
 		return performanceTime;
 	}
 
-	private int toWriteAgeRestrictions() {                 // Р’РІРѕРґ РіРѕРґР° РїСЂРµРјСЊРµСЂС‹
-		System.out.print("\t\tР“РѕРґ РїСЂРµРјСЊРµСЂС‹: ");
+	private int toWriteAgeRestrictions() {                 // Ввод года премьеры
+		System.out.print("\t\tГод премьеры: ");
 		Scanner console = new Scanner(System.in);
 		int performanceTime = console.nextInt();
 		console.nextLine();
-		while (performanceTime < 0) {                      // Р—Р°С‰РёС‚Р° РѕС‚ РЅРµРІРµСЂРЅРѕРіРѕ РІРІРѕРґР°
-			System.out.println("РќРµРІРµСЂРЅС‹Р№ С„РѕСЂРјР°С‚ РІРІРѕРґР°!");
+		while (performanceTime < 0) {                      // Защита от неверного ввода
+			System.out.println("Неверный формат ввода!");
 			performanceTime = console.nextInt();
 			console.nextLine();
 		}
 		return performanceTime;
+	}
+
+	public void addActor() {  // Добавление актера в Постановку
+		numberOfActors++;
+	}
+
+	public void delActor() {  // Удаление актера из Постановки
+		numberOfActors--;
 	}
 }
