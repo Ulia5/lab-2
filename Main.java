@@ -10,15 +10,15 @@ public class Main {
 		stages_1[0] = new Stage("Большая", 600, 2, performance);
 		Theatre theatre_1 = new Theatre("Драматический", 1990, 1, stages_1);
 		theatre_1.toPrint();
-		Actor actor_1 = new Actor(theatre_1);
-		Actor actor_2 = new Actor("Иван", "Иванов", 28, theatre_1);
-		actor_1.toPrint();
-		actor_2.toPrint();
-		actor_1.addPerformanceAct(performance[1]);
-		actor_1.toPrint();
+		StageDirector sd_1 = new StageDirector(theatre_1);
+		StageDirector sd_2 = new StageDirector("Иван", "Иванов", 28, theatre_1);
+		sd_1.toPrint();
+		sd_2.toPrint();
+		sd_1.addPerformanceDir(performance[1]);
+		sd_1.toPrint();
 		performance[1].toPrint();
-		actor_1.delPerformanceAct(performance[1]);
-		actor_1.toPrint();
+		sd_1.delPerformanceDir(performance[1]);
+		sd_1.toPrint();
 		performance[1].toPrint();
 	}
 }

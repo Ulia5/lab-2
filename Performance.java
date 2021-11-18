@@ -5,7 +5,7 @@ public class Performance {
 	private int perfomanceTime = 0;            // Время Постановки (в минутах)
 	private int ageRestrictions = 0;           // Год премьеры
 	private int numberOfActors = 0;          // Количество актеров в Постановке
-	//private int numberOfStageDirectors = 0;  // Количество работников Постановочной группы в постановке
+	private int numberOfStageDirectors = 0;  // Количество работников Постановочной группы в постановке
 
 	public Performance() {                                 // Конструктор Постановки
 		this.namePerf = toWriteName();
@@ -32,8 +32,12 @@ public class Performance {
 		return ageRestrictions;
 	}
 
-	public int getNumberOfActors() {
+	public int getNumberOfActors() {                       // Возвраещние кол-ва актеров Постановки
 		return numberOfActors;
+	}
+
+	public int getNumberOfStageDirectors() {               // Возвраещние кол-ва работников Постановки
+		return numberOfStageDirectors;
 	}
 
 	public void toPrint() {     // Вывод информации о постановке
@@ -46,8 +50,8 @@ public class Performance {
 		System.out.println(getAgeRegistration());
 		System.out.print("\t\tАктеров в постановке: ");
 		System.out.println(getNumberOfActors());
-		/*System.out.print("Работников постановочной группы в постановке: ");
-		System.out.println(getNumberOfStageDirectors());*/
+		System.out.print("\t\tРаботников постановочной группы в постановке: ");
+		System.out.println(getNumberOfStageDirectors());
 		}
 		else
 			System.out.println("Необходимо заполнить структуру!");
@@ -97,5 +101,13 @@ public class Performance {
 
 	public void delActor() {  // Удаление актера из Постановки
 		numberOfActors--;
+	}
+
+	public void addStageDirector() {  // Добавление работника в Постановку
+		numberOfStageDirectors++;
+	}
+
+	public void delStageDirector() {  // Удаление работника из Постановки
+		numberOfStageDirectors--;
 	}
 }

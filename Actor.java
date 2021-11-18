@@ -90,7 +90,7 @@ public class Actor {
 	}
 	else
 		System.out.println("Таких постановок не найдено!");
-}
+	}
 
 	private String toWriteNameAct() {                   // Ввод имени Актера
 		System.out.print("Имя актера: ");
