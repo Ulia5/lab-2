@@ -3,8 +3,8 @@ import java.util.Scanner;
 public class Theatre {
 	private int numberOfStages = 0;               // Количество сцен
 	private Stage [] stages = new Stage[5];       // Сцены
-	//private int numberOfActors = 0;             // Количество актеров
-	//private int numberOfStageDirectors = 0;     // Количество работников постановочной группы
+	private int numberOfActors = 0;               // Количество актеров
+	private int numberOfStageDirectors = 0;       // Количество работников постановочной группы
 	private String nameTh;                        // Название театра
 	private int yearOfFoundation = 0;             // Год основания
 	private int numberOfPerformance = 0;
@@ -142,7 +142,15 @@ public class Theatre {
 		numberOfStages++;
 	}
 
-	private void decreaseNumberOfStages() {     // Уменьшение числа сцен
+	private void decreaseNumberOfActors() {     // Уменьшение числа сцен
 		numberOfStages--;
+	}
+
+	private void increasingNumberOfActors() {   // Увеличение кол-ва актеров
+		numberOfActors++;
+	}
+
+	private void increasingNumberOfStageDirectors() {   // Увеличение кол-ва работников
+		numberOfStageDirectors++;
 	}
 }

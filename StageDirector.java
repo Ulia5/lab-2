@@ -13,6 +13,7 @@ public class StageDirector {
 		this.surnameDir = toWriteSurnameDir();
 		this.ageDir = toWriteAgeDir();
 		this.jobPlace = theatre;
+		this.jobPlace.increasingNumberOfStageDirectors();
 		System.out.println();
 	}
 
@@ -22,6 +23,7 @@ public class StageDirector {
 		this.surnameDir = surname;
 		this.ageDir = age;
 		this.jobPlace = theatre;
+		this.jobPlace.increasingNumberOfStageDirectors();
 	}
 
 	public String getNameDir() {     // Возвращение имени Работников

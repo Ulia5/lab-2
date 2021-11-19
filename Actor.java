@@ -13,6 +13,7 @@ public class Actor {
 		this.surnameAct = toWriteSurnameAct();
 		this.ageAct = toWriteAgeAct();
 		this.jobPlace = theatre;
+		this.jobPlace.increasingNumberOfActors();
 		System.out.println();
 	}
 
@@ -21,6 +22,7 @@ public class Actor {
 		this.surnameAct = surname;
 		this.ageAct = age;
 		this.jobPlace = theatre;
+		this.jobPlace.increasingNumberOfActors();
 	}
 
 	public String getNameAct() {     // Возвращение имени Актера
