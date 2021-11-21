@@ -5,11 +5,11 @@ using System.Text;
 namespace c_sharp
 {
     class Performance
-	{	// Описание структуры Постановка
+	{	// Описание класса Постановка
 		string namePerf;			// Название Постановки
 		int performanceTime = 0;	// Время Постановки (в минутах)
 		int ageRestrictions = 0;    // Год премьеры
-		//int numberOfActors = 0;		// Количество актеров в Постановке
+		int numberOfActors = 0;		// Количество актеров в Постановке
 		//int numberOfStageDirectors = 0;  // Количество работников постановочной группы в Постановке
 
 		public Performance()
@@ -42,11 +42,17 @@ namespace c_sharp
 			return ageRestrictions;
         }
 
+		public int getNumberOfActors()
+        {	// Возвращение кол-ва актеров
+			return numberOfActors;
+        }
+
 		public void toPrint()
         {   // Функция вывода информации о Постановке
 			Console.WriteLine("\t\tНазвание постановки: " + getNamePerf());
 			Console.WriteLine("\t\tВремя постановки (в минутах): " + getPerformanceTime());
 			Console.WriteLine("\t\tГод премьеры: " + getAgeRestrictions());
+			Console.WriteLine("\t\tКоличество актеров: " + getNumberOfActors());
         }
 
 		private string toWriteName()
@@ -87,5 +93,25 @@ namespace c_sharp
 			}
 			return age;
 		}
+
+		public void addActor()
+		{   // Добавление актера 
+			numberOfActors++;
+		}
+
+		public void delActor()
+		{   // Удаление актера
+			numberOfActors--;
+		}
+
+		/*public void addStageDirector()
+		{   // Добавление работника
+			numberOfStageDirectors++;
+		}
+
+		public void delStageDirector()
+		{   // Удаление работника
+			numberOfStageDirectors--;
+		}*/
 	}
 }

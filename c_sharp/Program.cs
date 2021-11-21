@@ -14,11 +14,16 @@ namespace c_sharp
             stage_1[0] = new Stage("Большая", 560, numPerf_1, performance_1);
             Theatre theatre = new Theatre("Драматический", 1990, numStage_1, stage_1);
             theatre.toPrint();
-            theatre.getStage(0).addPerformance();
-            theatre.getStage(0).addPerformance(new Performance("Гроза", 300, 1999));
+            Actor actor_1 = new Actor(theatre);
+            Actor actor_2 = new Actor("Олег", "Орлов", 25, theatre);
+            actor_2.toPrint();
+            actor_1.addPerformanceAct(theatre.getStage(0).getPerformance(0));
+            actor_2.addPerformanceAct(theatre.getStage(0).getPerformance(0));
             theatre.toPrint();
-            theatre.getStage(0).delPerformance(1);
+            actor_1.toPrint();
+            actor_1.delPerformanceAct(theatre.getStage(0).getPerformance(0));
             theatre.toPrint();
+            actor_1.toPrint();
         }
     }
 }

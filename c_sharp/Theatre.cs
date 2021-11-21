@@ -8,7 +8,7 @@ namespace c_sharp
     {   // Описание класса Театр
         int numberOfStages = 0;             // Количество сцен
         Stage[] stages = new Stage[5];      // Сцены
-        //int numberOfActors = 0;           // Количество актеров
+        int numberOfActors = 0;             // Количество актеров
         //int numberOfStageDirectors = 0;   // Количество работников постановочной группы
         string nameTh;                      // Название театра
         int yearOfFoundation = 0;           // Год основания
@@ -50,10 +50,16 @@ namespace c_sharp
             return stages[num];
         }
 
+        public int getNumberOfActors()
+        {   // Возвращение кол-ва актеров
+            return numberOfActors;
+        }
+
         public void toPrint()
         { // Функция вывода информации о Театре
             Console.WriteLine("Название театра: " + getNameTh());
             Console.WriteLine("Год основания: " + getYearOfFoundation());
+            Console.WriteLine("Количество актеров: " + getNumberOfActors());
             Console.WriteLine("Количество сцен: " + getNumberOfStages());
             int count = 0;
             for(int i = 0; i < getNumberOfStages(); i++)
@@ -173,5 +179,25 @@ namespace c_sharp
         {   // Уменьшение кол-ва сцен
             numberOfStages--;
         }
+
+        public void increasingNumberOfActors()
+        {   // Увеличение кол-ва актеров
+            numberOfActors++;
+        }
+
+        private void decreaseNumberOfActors()
+        {     // Уменьшение кол-ва актеров
+            numberOfStages--;
+        }
+
+        /*private void increasingNumberOfStageDirectors()
+        {   // Увеличение кол-ва работников сцены
+            numberOfStageDirectors++;
+        }
+
+        private void decreasingNumberOfStageDirectors()
+        {   // Уменьшение кол-ва работников сцены
+            numberOfStageDirectors--;
+        }*/
     }
 }
