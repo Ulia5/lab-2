@@ -10,7 +10,7 @@ namespace c_sharp
 		int performanceTime = 0;	// Время Постановки (в минутах)
 		int ageRestrictions = 0;    // Год премьеры
 		int numberOfActors = 0;		// Количество актеров в Постановке
-		//int numberOfStageDirectors = 0;  // Количество работников постановочной группы в Постановке
+		int numberOfStageDirectors = 0;  // Количество работников постановочной группы в Постановке
 
 		public Performance()
 		{   // Конструктор Постановки (без параметров)
@@ -47,13 +47,19 @@ namespace c_sharp
 			return numberOfActors;
         }
 
+		public int getNumberOfStageDirectors()
+		{
+			return numberOfStageDirectors;
+		}
+
 		public void toPrint()
         {   // Функция вывода информации о Постановке
 			Console.WriteLine("\t\tНазвание постановки: " + getNamePerf());
 			Console.WriteLine("\t\tВремя постановки (в минутах): " + getPerformanceTime());
 			Console.WriteLine("\t\tГод премьеры: " + getAgeRestrictions());
 			Console.WriteLine("\t\tКоличество актеров: " + getNumberOfActors());
-        }
+			Console.WriteLine("\t\tКоличество работников сцены: " + getNumberOfStageDirectors());
+		}
 
 		private string toWriteName()
 		{	// Ввод названи Постановки
@@ -104,7 +110,7 @@ namespace c_sharp
 			numberOfActors--;
 		}
 
-		/*public void addStageDirector()
+		public void addStageDirector()
 		{   // Добавление работника
 			numberOfStageDirectors++;
 		}
@@ -112,6 +118,6 @@ namespace c_sharp
 		public void delStageDirector()
 		{   // Удаление работника
 			numberOfStageDirectors--;
-		}*/
+		}
 	}
 }

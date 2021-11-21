@@ -48,7 +48,7 @@ namespace c_sharp
 		}
 
 		public Theatre getJobPlace()
-		{   // Возвращение места работы
+		{   // Возвращение места работ
 			return jobPlace;
 		}
 

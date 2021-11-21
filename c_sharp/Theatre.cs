@@ -9,7 +9,7 @@ namespace c_sharp
         int numberOfStages = 0;             // Количество сцен
         Stage[] stages = new Stage[5];      // Сцены
         int numberOfActors = 0;             // Количество актеров
-        //int numberOfStageDirectors = 0;   // Количество работников постановочной группы
+        int numberOfStageDirectors = 0;     // Количество работников постановочной группы
         string nameTh;                      // Название театра
         int yearOfFoundation = 0;           // Год основания
 
@@ -55,11 +55,17 @@ namespace c_sharp
             return numberOfActors;
         }
 
+        public int getNumberOfStageDirectors()
+        {
+            return numberOfStageDirectors;
+        }
+
         public void toPrint()
         { // Функция вывода информации о Театре
             Console.WriteLine("Название театра: " + getNameTh());
             Console.WriteLine("Год основания: " + getYearOfFoundation());
             Console.WriteLine("Количество актеров: " + getNumberOfActors());
+            Console.WriteLine("Количество работников сцены: " + getNumberOfStageDirectors());
             Console.WriteLine("Количество сцен: " + getNumberOfStages());
             int count = 0;
             for(int i = 0; i < getNumberOfStages(); i++)
@@ -190,7 +196,7 @@ namespace c_sharp
             numberOfStages--;
         }
 
-        /*private void increasingNumberOfStageDirectors()
+        public void increasingNumberOfStageDirectors()
         {   // Увеличение кол-ва работников сцены
             numberOfStageDirectors++;
         }
@@ -198,6 +204,6 @@ namespace c_sharp
         private void decreasingNumberOfStageDirectors()
         {   // Уменьшение кол-ва работников сцены
             numberOfStageDirectors--;
-        }*/
+        }
     }
 }
