@@ -18,7 +18,7 @@ namespace c_sharp
             this.nameTh = toWriteName();
             this.yearOfFoundation = toWriteYear();
             this.numberOfStages = toWriteNumberOfStages();
-            this.stages = toWriteStages();
+            this.stages = toWriteStage();
             Console.WriteLine();
         }
 
@@ -45,21 +45,21 @@ namespace c_sharp
             return numberOfStages;
         }
 
-        public Stage getStages (int num)
+        public Stage getStage (int num)
         {   // Возвращение сцены num
             return stages[num];
         }
 
         public void toPrint()
-        { // Функция вывода информации о театре
+        { // Функция вывода информации о Театре
             Console.WriteLine("Название театра: " + getNameTh());
             Console.WriteLine("Год основания: " + getYearOfFoundation());
             Console.WriteLine("Количество сцен: " + getNumberOfStages());
-            //int count = 0;
+            int count = 0;
             for(int i = 0; i < getNumberOfStages(); i++)
             {
             Console.WriteLine();
-                //count += stages[i].getNumberOfPerformances();
+                count += stages[i].getNumberOfPerformances();
                 Console.WriteLine("Сцена №" + (i + 1) + ':');
                 stages[i].toPrint();
             }
@@ -73,7 +73,7 @@ namespace c_sharp
                 Stage[] newStages = new Stage[5];
                 for (int i = 0; i < getNumberOfStages(); i++)
                 {
-                    newStages[i] = getStages(i);
+                    newStages[i] = getStage(i);
                 }
                 newStages[getNumberOfStages()] = new Stage();
                 stages = newStages;
@@ -91,7 +91,7 @@ namespace c_sharp
                 Stage[] newStages = new Stage[5];
                 for(int i = 0; i < getNumberOfStages(); i++)
                 {
-                    newStages[i] = getStages(i);
+                    newStages[i] = getStage(i);
                 }
                 newStages[getNumberOfStages()] = stage;
                 stages = newStages;
@@ -154,7 +154,7 @@ namespace c_sharp
             return num;
         }
 
-        private Stage[] toWriteStages()
+        private Stage[] toWriteStage()
         {   // Вввод информации о сценах
             Stage[] stages = new Stage[getNumberOfStages()];
             for (int i = 0; i < getNumberOfStages(); i++)
@@ -173,88 +173,5 @@ namespace c_sharp
         {   // Уменьшение кол-ва сцен
             numberOfStages--;
         }
-        /*private int WriteNumberOfStage()
-        {
-
-        }
-
-        private Stage toWriteStages()
-        {
-
-        }*/
-
-
-        /*public void toString()
-        { // Функция вывода информации о театре
-        if (nameTh != NULL && yearOfFoundation != NULL)
-        {
-        cout « "Название: ";
-        cout « nameTh « endl;
-        cout « "Год основания: ";
-        cout « yearOfFoundation « endl;
-        cout « "Всего сцен: ";
-        cout « numberOfStages « endl;
-        int count = 0;
-        for (int i = 0; i < numberOfStages; i++)
-        {
-        count += stages[i].getNumberOfPerformances();
-        cout « "Сцена №" « i + 1 « ':' « endl;
-        stages[i].toString();
-        }
-        cout « "Всего спектаклей: " « count « endl;
-        cout « "Всего актеров: ";
-        cout « numberOfActors « endl;
-        cout « "Всего работников постановочной группы: ";
-        cout « numberOfStageDirectors « endl;
-        }
-        else
-        cout « "Для начала заполните все поля!" « endl;
-        }
-
-        void Theatre::addStage()
-        { // Добавление сцены в театр
-        stages[numberOfStages].setStage();
-        numberOfStages = numberOfStages + 1;
-        }
-
-        void Theatre::addStage(char name[50], int capacity, int countPerf, Performance* performances[])
-        { // Добавление сцены в театр
-        stages[numberOfStages].setStage(name, capacity, countPerf, performances);
-        numberOfStages = numberOfStages + 1;
-        }
-
-        void Theatre::delStage(int numStage)
-        { // Удаление сцены из театра
-        if (numStage >= 0 && numStage < numberOfStages)
-        {
-        for (int i = numStage; i < numberOfStages - 1; i++)
-        {
-        stages[i] = stages[i + 1];
-        }
-        stages[numberOfStages - 1] = { };
-        numberOfStages--;
-        }
-        else
-        cout « "Номер сцены должен быть в промежутке от 0 до" « numberOfStages - 1 « " (включая)." « endl;
-        }
-
-        void Theatre::addActor()
-        {
-        numberOfActors++;
-        }
-
-        void Theatre::addStageDirector()
-        {
-        numberOfStageDirectors++;
-        }
-        char* Theatre::getNameTh()
-        {
-        return nameTh;
-        }
-
-        Stage* Theatre::getStages(int number)
-        {
-        return &stages[number];
-        }*/
     }
 }
