@@ -1,4 +1,5 @@
 #include "StageDirector.h"
+
 void StageDirector::setStageDirector(Theatre* jobPlaceNew) 
 {	// Функция заполнения информации о Работнике постановочной группы
 	cout << "\tИмя работника постановочной группы: ";

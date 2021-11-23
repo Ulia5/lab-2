@@ -49,61 +49,19 @@ int main()
 	stages[0]->setStage((char*)"Большая сцена", 500, 2, performances);
 	stages[1]->setStage((char*)"Малая сцена", 100, 1, performances0);
 	theatres[0].setTheatre((char*)"Музыкальный театр", 1990, 2, stages);
-	// Пример для 1 задания
-	cout << "Задание №1:\n" << endl;
-	actors[0].toString();
-	actors[0].age_change() = 25;
-	actors[0].toString();
-	// Пример для 3 задания
-	cout << "\nЗадание №3:\n" << endl;
-	theatres[0].toString();
-	cout << "Всего спектаклей в театрах: "; 
-	int num = 0;
-	for(int i = 0; i < 3; i++)
-		num += allPerformances(theatres[i]);
-	cout << num << endl;
-	cout << endl;
-	// Пример для заданий 2 и 4
-	cout << "\nЗадание №2 и №4:\n" << endl;
-	Actor newActor;
-	newActor.setActor((char*)"Андрей", (char*)"Миронов", 30, &theatres[0]);
-	newActor.addPerformanceAct(performances0[0]);
-	cout << "Какую из операций вы хотите применить (+ или ++): ";
-	string op;
-	cin >> op;
-	if (op == "+") {
-		actors[2] = actors[0] + newActor;
-		cout << "Сложение списка спектаклей actors[0] и newActor (actors[0] + newActor):\n" << endl;
-		actors[2].toString();
-	}
-	else
-		if (op == "++") {
-			cout << "\nКакой из видов вы хотите применить (pref - префиксная, post - постфиксная): ";
-			cin >> op;
-			if (op == "pref") {
-				newActor.setActor((char*)"Михаил", (char*)"Боярский", 60, &theatres[0]);
-				actors[2] = ++newActor;
-				cout << "\nДобавление к списку спектаклей newActor сгенерированного спектакля(++newActor):\n" << endl;
-				cout << "Информация об исходном актере после дейсвия:\n" << endl;
-				newActor.toString();
-				cout << "Информация о полученном актере после действия:\n" << endl;
-				actors[2].toString();
-			}
-			else
-				if (op == "post") {
-					newActor.setActor((char*)"Михаил", (char*)"Боярский", 60, &theatres[0]);
-					actors[2] = newActor++;
-					cout << "\nДобавление к списку спектаклей newActor сгенерированного спектакля(newActor++):\n" << endl;
-					cout << "Информация об исходном актере после дейсвия:\n" << endl;
-					newActor.toString();
-					cout << "Информация о полученном актере после действия:\n" << endl;
-					actors[2].toString();
-				}
-				else
-					cout << "Неверный формат ввода!" << endl;
-		}
-		else
-			cout << "Неверный формат ввода!" << endl;
+	theatres[1].setTheatre((char*)"Драматический театр", 2000, 1, stages);
+	actors[2].setActor((char*)"Михаил", (char*)"Боярский", 60, &theatres[1]);
+	// Пример для задания
+	cout << "Актеров в 1м театре: " << theatres[0].getNumberOfActors() << ", актеров во 2м театре: " << theatres[1].getNumberOfActors() << endl;
+	cout << "\nЗначение общего количества актеров до обращения к методу: " << Theatre::getAllAct() << endl;
+	Theatre::countAllAct(theatres[0]);
+	Theatre::countAllAct(theatres[1]);
+	cout << "\nЗначение общего количества актеров после обращения к методу: " << Theatre::getAllAct() << endl;
+	cout << "\nРаботников в 1м театре: " << theatres[0].getNumberOfStageDirectors() << ", работников во 2м театре: " << theatres[1].getNumberOfStageDirectors() << endl;
+	cout << "\nЗначение общего количества работников до обращения к методу: " << Theatre::getAllDir() << endl;
+	Theatre::countAllDir(theatres[0]);
+	Theatre::countAllDir(theatres[1]);
+	cout << "\nЗначение общего количества актеров после обращения к методу: " << Theatre::getAllDir() << endl;
 	// Освобождение памяти
 	delete[] theatres;
 	for (int i = 0; i < 2; i++) {

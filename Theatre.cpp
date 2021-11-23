@@ -1,6 +1,32 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include "Theatre.h"
 
+// Инициализация статической переменной, содержащей общ. кол-во актеров в Театрах
+int Theatre::allActors = 0;
+
+void Theatre::countAllAct(Theatre th) 
+{	// Подсчет общего кол-ва актеров во всех Театрах
+	allActors += th.getNumberOfActors();
+}
+
+int Theatre::getAllAct()
+{	// Возвращение общего кол-ва актеров в Театрах
+	return allActors;
+}
+
+// Инициализация статической переменной, содержащей общ. кол-во работников в Театрах
+int Theatre::allStageDirectors = 0;
+
+void Theatre::countAllDir(Theatre th)
+{	// Подсчет общего кол-ва работников во всех Театрах
+	allStageDirectors += th.getNumberOfStageDirectors();
+}
+
+int Theatre::getAllDir()
+{	// Возвращение общего кол-ва работников в Театрах
+	return allStageDirectors;
+}
+
 void Theatre::setTheatre()
 {	// Функция заполнения информации о театре
 	cout << "Название театра: ";
@@ -106,4 +132,14 @@ string Theatre::getNameTh()
 Stage* Theatre::getStages(int number) 
 {   // Возвращение элемента из массива сцен 
 	return &stages[number];
+}
+
+int Theatre::getNumberOfActors()
+{	// Возвращение кол-ва актеров в Театре
+	return numberOfActors;
+}
+
+int Theatre::getNumberOfStageDirectors()
+{	// Возвращение кол-ва работников в Театре
+	return numberOfStageDirectors;
 }

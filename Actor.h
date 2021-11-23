@@ -16,7 +16,7 @@ class Actor {				// Объявление структуры Актер
 	Performance performanceAct[50]; // Постановки с участием данного актера
 public:
 	void setActor(Theatre* jobPlace);
-	void setActor(string name, char* surname, int age, Theatre* jobPlaceNew);
+	void setActor(string name, string surname, int age, Theatre* jobPlaceNew);
 	void toString();
 	void addPerformanceAct(Performance* performance);
 	void delPerformanceAct(Performance* performance);
