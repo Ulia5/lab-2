@@ -7,7 +7,6 @@ public class Theatre {
 	private int numberOfStageDirectors = 0;       // Количество работников постановочной группы
 	private String nameTh;                        // Название театра
 	private int yearOfFoundation = 0;             // Год основания
-	private int numberOfPerformance = 0;
 
 	public Theatre() {                            // Конструктор Театра
 		this.nameTh = toWriteName();
@@ -17,30 +16,36 @@ public class Theatre {
 		System.out.println();
 	}
 
-	public Theatre(String name, int year, int count, Stage stages[]) {   // Конструктор с параметром
-		this.nameTh = name;
-		this.yearOfFoundation = year;
-		this.numberOfStages = count;
+	public Theatre(String nameTh, int yearOfFoundation, int numberOfStages, Stage stages[])
+	{   // Конструктор с параметром
+		this.nameTh = nameTh;
+		this.yearOfFoundation = yearOfFoundation;
+		this.numberOfStages = numberOfStages;
 		this.stages = stages;
 	}
 
-	public String getNameTh() {                               // Возвращение названия Театра
+	public String getNameTh()
+	{   // Возвращение названия Театра
 		return nameTh;
 	}
 
-	public int getYearOfFoundation() {                        // Возвращения года основания Театра
+	public int getYearOfFoundation()
+	{   // Возвращения года основания Театра
 		return yearOfFoundation;
 	}
 
-	public int getNumberOfStages() {                          // Возвращения года основания Театра
+	public int getNumberOfStages()
+	{   // Возвращения года основания Театра
 		return numberOfStages;
 	}
 
-	public Stage getStage(int num) {
+	public Stage getStage(int num)
+	{	// Возвращение сцены
 		return stages[num];
 	}
 
-	public void toPrint() {                                   // Вывод информации о Театре
+	public void toPrint()
+	{	// Вывод информации о Театре
 		if (!getNameTh().isEmpty() && getYearOfFoundation() != 0) {
 			System.out.print("Название: ");
 			System.out.println(getNameTh());
@@ -60,7 +65,8 @@ public class Theatre {
 
 	}
 
-	public void addStage() {                                  // Добавление сцены в Театр
+	public void addStage()
+	{ 	// Добавление сцены в Театр
 		if(getNumberOfStages() < 5) { 
 			stages[getNumberOfStages()] = new Stage();
 			increasingNumberOfStages();
@@ -70,7 +76,8 @@ public class Theatre {
 		System.out.println();
 	}
 
-	public void addStage(int count, Stage stage[]) {          // Добавление сцены в Театр
+	public void addStage(int count, Stage stage[])
+	{ 	// Добавление сцены в Театр
 		if(getNumberOfStages() < 5) {
 			for(int i = 0; i < count; i++) {
 				stages[getNumberOfStages()] = stage[i];
@@ -81,18 +88,20 @@ public class Theatre {
 			System.out.println("Максимально допустимое значение кол-ва сцен: 5!");
 	}
 
-	public void delStage(int numStage) {
+	public void delStage(int numStage)
+	{	// Удаление сцены
 		if (numStage >= 0 && numStage < getNumberOfStages()) {
 		for (int i = numStage; i < getNumberOfStages() - 1; i++) {
 			stages[i] = stages[i + 1];
 		}
-		decreaseNumberOfStages();
+		decreasingNumberOfStages();
 	}
 	else
 		System.out.println("Номер сцены должен быть в промежутке от 0 до" + (numberOfStages - 1) + " (включая).");
 	}
 
-	private String toWriteName() {                 // Ввод названия Театра
+	private String toWriteName()
+	{   // Ввод названия Театра
 		System.out.print("Название театра: ");
 		Scanner console = new Scanner(System.in);
 		String name = console.nextLine();
@@ -103,20 +112,15 @@ public class Theatre {
 		return name;
 	}
 
-	private int toWriteYear() {                    // Ввод года основания Театра
+	private int toWriteYear()
+	{   // Ввод года основания Театра
 		System.out.print("Год основания: ");
-		Scanner console = new Scanner(System.in);
-		int year = console.nextInt();
-		console.nextLine();
-		while (year < 1740 || year > 2021) {       // Защита от неверного ввода
-			System.out.println("Неверный формат ввода!");
-			year = console.nextInt();
-			console.nextLine();
-		}
-		return year;
+		YearOfFoundation year = new YearOfFoundation();
+		return year.year;
 	}
 
-	private int toWriteNumberOfStages() {          // Ввод количества Сцен
+	private int toWriteNumberOfStages()
+	{   // Ввод количества Сцен
 		int number;
 		System.out.print("Количество сцен: ");
 		Scanner console = new Scanner(System.in);
@@ -130,7 +134,8 @@ public class Theatre {
 		return number;
 	}
 
-	private Stage[] toWriteStages() {               // Ввод информации о сценах Театра   
+	private Stage[] toWriteStages()
+	{   // Ввод информации о сценах Театра
 		Stage stages[] = new Stage[getNumberOfStages()];
 		for (int i = 0; i < getNumberOfStages(); i++) {
 			stages[i] = new Stage();
@@ -138,19 +143,23 @@ public class Theatre {
 		return stages;
 	}
 
-	private void increasingNumberOfStages() {   // Увеличение кол-ва сцен
+	private void increasingNumberOfStages()
+	{   // Увеличение кол-ва сцен
 		numberOfStages++;
 	}
 
-	private void decreaseNumberOfActors() {     // Уменьшение числа сцен
+	public void decreasingNumberOfStages()
+	{   // Уменьшение числа сцен
 		numberOfStages--;
 	}
 
-	private void increasingNumberOfActors() {   // Увеличение кол-ва актеров
+	public void increasingNumberOfActors()
+	{   // Увеличение кол-ва актеров
 		numberOfActors++;
 	}
 
-	private void increasingNumberOfStageDirectors() {   // Увеличение кол-ва работников
+	public void increasingNumberOfStageDirectors()
+	{   // Увеличение кол-ва работников
 		numberOfStageDirectors++;
 	}
 }
