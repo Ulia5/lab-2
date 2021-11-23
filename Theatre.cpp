@@ -1,14 +1,13 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include "Theatre.h"
 
-void Theatre::setTheatre() {                      // Функция заполнения информации о театре
-	nameTh = new char[100];
+void Theatre::setTheatre()
+{	// Функция заполнения информации о театре
 	cout << "Название театра: ";
-	gets_s(nameTh, 99);
-	while (nameTh == NULL) {        // Защита от неверного ввода
+	cin >> nameTh;
+	while (nameTh.empty()) {        // Защита от неверного ввода
 		cout << "Неверный формат ввода!" << endl;
-		gets_s(nameTh, 99);
-		cin.get();
+		cin >> nameTh;
 	}
 	cout << "Год основания: ";
 	cin >> yearOfFoundation;
@@ -30,17 +29,18 @@ void Theatre::setTheatre() {                      // Функция заполнения информац
 		stages[i].setStage();
 }
 
-void Theatre::setTheatre(char* name, int year, int countStages, Stage** masStages) { // Функция заполнения информации о театре(без ввода)
-	nameTh = new char[100];
-	strcpy(nameTh, name);
+void Theatre::setTheatre(string name, int year, int countStages, Stage** masStages) 
+{   // Функция заполнения информации о театре(без ввода)
+	nameTh = name;
 	yearOfFoundation = year;
 	numberOfStages = countStages;
 	for (int i = 0; i < numberOfStages; i++)
 		stages[i] = *masStages[i];
 }
 
-void Theatre::toString() {         // Функция вывода информации о театре
-	if (nameTh != NULL && yearOfFoundation != NULL) {
+void Theatre::toString() 
+{   // Функция вывода информации о театре
+	if (!nameTh.empty() && yearOfFoundation != NULL) {
 		cout << "Название: ";
 		cout << nameTh << endl;
 		cout << "Год основания: ";
@@ -58,22 +58,26 @@ void Theatre::toString() {         // Функция вывода информации о театре
 		cout << numberOfActors << endl;
 		cout << "Всего работников постановочной группы: ";
 		cout << numberOfStageDirectors << endl;
+		cout << endl;
 	}
 	else
 		cout << "Для начала заполните все поля!" << endl;
 }
 
-void Theatre::addStage() {  // Добавление сцены в театр
+void Theatre::addStage() 
+{   // Добавление сцены в театр
 	stages[numberOfStages].setStage();
 	numberOfStages = numberOfStages + 1;
 }
 
-void Theatre::addStage(char name[50], int capacity, int countPerf, Performance* performances[]) {  // Добавление сцены в театр
+void Theatre::addStage(string name, int capacity, int countPerf, Performance* performances[]) 
+{   // Добавление сцены в театр
 	stages[numberOfStages].setStage(name, capacity, countPerf, performances);
 	numberOfStages = numberOfStages + 1;
 }
 
-void Theatre::delStage(int numStage) {  // Удаление сцены из театра
+void Theatre::delStage(int numStage) 
+{   // Удаление сцены из театра
 	if (numStage >= 0 && numStage < numberOfStages) {
 		for (int i = numStage; i < numberOfStages - 1; i++) {
 			stages[i] = stages[i + 1];
@@ -85,17 +89,21 @@ void Theatre::delStage(int numStage) {  // Удаление сцены из театра
 		cout << "Номер сцены должен быть в промежутке от 0 до" << numberOfStages - 1 << " (включая)." << endl;
 }
 
-void Theatre::addActor() {
+void Theatre::addActor() 
+{   // Увеличение кол-ва актеров
 	numberOfActors++;
 }
 
-void Theatre::addStageDirector() {
+void Theatre::addStageDirector() 
+{   // Увеличение кол-ва работников
 	numberOfStageDirectors++;
 }
-char* Theatre::getNameTh() {
+string Theatre::getNameTh() 
+{   // Возвращение названия Театра
 	return nameTh;
 }
 
-Stage* Theatre::getStages(int number) {
+Stage* Theatre::getStages(int number) 
+{   // Возвращение элемента из массива сцен 
 	return &stages[number];
 }

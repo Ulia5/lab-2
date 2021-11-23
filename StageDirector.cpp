@@ -1,11 +1,10 @@
 #include "StageDirector.h"
-void StageDirector::setStageDirector(Theatre* jobPlaceNew) { // Функция заполнения информации о Работнике постановочной группы
-	nameDir = (char*)malloc(50);
-	surnameDir = (char*)malloc(50);
+void StageDirector::setStageDirector(Theatre* jobPlaceNew) 
+{	// Функция заполнения информации о Работнике постановочной группы
 	cout << "\tИмя работника постановочной группы: ";
-	gets_s(nameDir, 49);
+	cin >> nameDir;
 	cout << "\tФамилия работника постановочной группы: ";
-	gets_s(surnameDir, 49);
+	cin >> surnameDir;
 	cout << "\tВозраст работника постановочной группы: ";
 	cin >> ageDir;
 	cin.get();
@@ -13,8 +12,8 @@ void StageDirector::setStageDirector(Theatre* jobPlaceNew) { // Функция заполнен
 	jobPlaceNew->addStageDirector();
 }
 
-void StageDirector::setStageDirector(char* name, char* surname, int age, Theatre* jobPlaceNew) {
-	// Функция заполнения информации о Работнике постановочной группы(без ввода)
+void StageDirector::setStageDirector(string name, char* surname, int age, Theatre* jobPlaceNew) 
+{	// Функция заполнения информации о Работнике постановочной группы(без ввода)
 	nameDir = name;
 	surnameDir = surname;
 	ageDir = age;
@@ -22,8 +21,9 @@ void StageDirector::setStageDirector(char* name, char* surname, int age, Theatre
 	jobPlaceNew->addStageDirector();
 }
 
-void StageDirector::toString() { // Вывод информации о Работнике постановочной группы
-	if (nameDir != NULL) {
+void StageDirector::toString() 
+{	// Вывод информации о Работнике постановочной группы
+	if (!nameDir.empty()) {
 		cout << "Информация о работнике постановочной группы:" << endl;
 		cout << "Имя и фамилия: ";
 		cout << nameDir << ' ' << surnameDir << endl;
@@ -43,14 +43,16 @@ void StageDirector::toString() { // Вывод информации о Работнике постановочной г
 		cout << "Для начала заполните все поля!" << endl;
 }
 
-void StageDirector::addPerformanceDir(Performance* performance) { // Добавление Постановки в список работ
+void StageDirector::addPerformanceDir(Performance* performance) 
+{	// Добавление Постановки в список работ
 	performanceDir[numProjects] = *performance;
 	performanceDir[numProjects].addStageDirector();
 	performance->addStageDirector();
 	numProjects++;
 }
 
-void StageDirector::delPerformanceDir(Performance* performance) { // Удаление Постановки из списка работ
+void StageDirector::delPerformanceDir(Performance* performance) 
+{	// Удаление Постановки из списка работ
 	bool flag = 0;
 	int numPerf = 0;
 	for (int i = 0; i < numProjects; i++)

@@ -1,17 +1,18 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include "Stage.h"
 
-void Stage::setStage() {   // Функция заполнение полей структуры
+void Stage::setStage() 
+{   // Функция заполнение полей структуры (без параметров)
 	cout << "\tНазвание сцены: ";
-	gets_s(nameSt, 49);
-	while (nameSt == NULL) {     // Защита от неверного ввода
+	cin >> nameSt;
+	while (nameSt.empty()) {	// Защита от неверного ввода
 		cout << "Неверный формат ввода!" << endl;
-		gets_s(nameSt, 49);
+		cin >> nameSt;
 	};
 	cout << "\tВместимость зала: ";
 	cin >> hallCapacity;
 	cin.get();
-	while (hallCapacity < 0) { // Защита от неверного ввода
+	while (hallCapacity < 0) {	// Защита от неверного ввода
 		cout << "Неверный формат ввода!" << endl;
 		cin >> hallCapacity;
 		cin.get();
@@ -23,16 +24,18 @@ void Stage::setStage() {   // Функция заполнение полей структуры
 			performances[i]->setPerformance();
 }
 
-void Stage::setStage(char name[50], int capacity, int countPerf, Performance* performancesNew[]) {
-	strcpy(nameSt, name);
+void Stage::setStage(string name, int capacity, int countPerf, Performance* performancesNew[]) 
+{	// // Функция заполнение полей структуры (с параметрами)
+	nameSt = name;
 	hallCapacity = capacity;
 	numberOfPerformances = countPerf;
 	for (int i = 0; i < numberOfPerformances; i++)
 		performances[i] = performancesNew[i];
 }
 
-void Stage::toString() { // Функция вывода информации о сцене
-	if (nameSt != NULL) {
+void Stage::toString() 
+{	// Функция вывода информации о сцене
+	if (!nameSt.empty()) {
 		cout << "Инфорцация о сцене ";
 		cout << nameSt << ":" << endl;
 		cout << "\tВместимость зала: ";
@@ -48,17 +51,20 @@ void Stage::toString() { // Функция вывода информации о сцене
 		cout << "Необходимо заполнить структуру!" << endl;
 }
 
-void Stage::addPerformance() { // Добавление постановки
+void Stage::addPerformance() 
+{	// Добавление постановки
 	performances[numberOfPerformances]->setPerformance();
 	numberOfPerformances++;
 }
 
-void Stage::addPerformance(char* namePerf, int performanceTime, int ageRestrictions) { // Добавление постановки
+void Stage::addPerformance(string namePerf, int performanceTime, int ageRestrictions) 
+{	// Добавление постановки
 	performances[numberOfPerformances]->setPerformance(namePerf, performanceTime, ageRestrictions);
 	numberOfPerformances++;
 }
 
-void Stage::delPerformance(int numPerformance) {  // Удаление постановки
+void Stage::delPerformance(int numPerformance) 
+{   // Удаление постановки
 	if (numPerformance >= 0 && numPerformance < numberOfPerformances) {
 		for (int i = numPerformance; i < numberOfPerformances - 1; i++) {
 			performances[i] = performances[i + 1];
@@ -70,10 +76,12 @@ void Stage::delPerformance(int numPerformance) {  // Удаление постановки
 		cout << "Номер постановки должен быть в промежутке от 0 до " << numberOfPerformances - 1 << " (включая)." << endl;
 }
 
-int Stage::getNumberOfPerformances() {
+int Stage::getNumberOfPerformances() 
+{	// Возвращение кол-ва постановок
 	return numberOfPerformances;
 }
 
-Performance* Stage::getPerformance(int number) {
+Performance* Stage::getPerformance(int number) 
+{	// Возвращение определенной постановки
 	return performances[number];
 }

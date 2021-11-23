@@ -1,21 +1,20 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include "Performance.h"
 
-void Performance::setPerformance() {                 // Функция заполнения информации о постановке
-	namePerf = (char*)malloc(50);
+void Performance::setPerformance() 
+{   // Функция заполнения информации о постановке
 	cout << "\t\tНазвание постановки: ";
-	gets_s(namePerf, 49);
-	while (namePerf == NULL) {     // Защита от неверного ввода
+	cin >> namePerf;
+	while (namePerf.empty()) {		// Защита от неверного ввода
 		cout << "Неверный формат ввода!" << endl;
 		cin >> namePerf;
-		cin.get();
 	};
 	cout << "\t\tВремя постановки (в минутах): ";
-	cin >> perfomanceTime;
+	cin >> performanceTime;
 	cin.get();
-	while (perfomanceTime < 0) { // Защита от неверного ввода
+	while (performanceTime < 0) {	// Защита от неверного ввода
 		cout << "Неверный формат ввода!" << endl;
-		cin >> perfomanceTime;
+		cin >> performanceTime;
 		cin.get();
 	}
 	cout << "\t\tГод премьеры: ";
@@ -28,21 +27,21 @@ void Performance::setPerformance() {                 // Функция заполнения инфор
 	}
 }
 
-void Performance::setPerformance(char* name, int time, int age) {  
-	// Функция заполнения информации о постановке(без ввода)
-	namePerf = new char[100];
-	strcpy(namePerf, name);
-	perfomanceTime = time;
+void Performance::setPerformance(string name, int time, int age) 
+{	// Функция заполнения информации о постановке(без ввода)
+	namePerf = name;
+	performanceTime = time;
 	ageRestrictions = age;
 }
 
-void Performance::toString() { // Вывод информации о постановке
-	if (namePerf != NULL) {
+void Performance::toString() 
+{   // Вывод информации о постановке
+	if (!namePerf.empty()) {
 		cout << "Инфорцация о постановке:" << endl;
 		cout << "\t\tНаименование постановки: ";
 		cout << namePerf << endl;
 		cout << "\t\tВремя постановки (в минутах): ";
-		cout << perfomanceTime << endl;
+		cout << performanceTime << endl;
 		cout << "\t\tГод премьеры: ";
 		cout << ageRestrictions << endl;
 		cout << "\t\tАктеров в постановке: ";
@@ -54,22 +53,37 @@ void Performance::toString() { // Вывод информации о постановке
 		cout << "Необходимо заполнить структуру!" << endl;
 }
 
-char* Performance::getNamePerf() {
+string Performance::getNamePerf() 
+{	// Возвращение названия Постановки
 	return namePerf;
 }
 
-void Performance::addActor() {
+void Performance::addActor() 
+{	// Увеличение кол-ва актеров
 	numberOfActors++;
 }
 
-void Performance::delActor() {
+void Performance::delActor() 
+{	// Уменьшение кол-ва актеров
 	numberOfActors--;
 }
 
-void Performance::addStageDirector() {
+void Performance::addStageDirector() 
+{	// Увеличение кол-ва работников
 	numberOfStageDirectors++;
 }
 
-void Performance::delStageDirector() {
+void Performance::delStageDirector() 
+{	// Увеличение кол-ва работников
 	numberOfStageDirectors--;
+}
+
+void Performance::somePerf()
+{	// Генерация случайной постановки
+	srand(1);
+	namePerf = "Какая-то постановка №" + to_string(1 + rand() % 50);
+	srand(100);
+	performanceTime = rand() % 400 + 1;
+	srand(1740);
+	ageRestrictions = rand() % 2021 + 1;
 }
