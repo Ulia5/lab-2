@@ -9,9 +9,20 @@ public class Main {
 		performance[1] = new Performance("Любовь и голуби", 180, 1990);
 		stages_1[0] = new Stage("Большая", 600, 2, performance);
 		Theatre theatre_1 = new Theatre("Драматический", 1990, 1, stages_1);
+		Theatre theatre_2 = new Theatre("Музыкальный", 2000, 1, stages_1);
+		Actor[] actors = new Actor[2];
+		actors[0] = new Actor("Михаил",  "Боярский", 65, theatre_1);
+		actors[0] = new Actor("Михаил",  "Коровин", 35, theatre_2);
 		System.out.println("Задание №1\n");
-		theatre_1.toPrint();
-		System.out.println("\nЗадание №2\n");
-		Theatre theatre_2 = new Theatre();
+		System.out.println("Актеров в 1м театре: " + (theatre_1.getNumberOfActors()) + ", актеров во 2м театре: " + theatre_2.getNumberOfActors());
+		System.out.println("\nЗначение общего количества актеров до обращения к методу: " + Theatre.getAllAct());
+		Theatre.countAllAct(theatre_1);
+		Theatre.countAllAct(theatre_2);
+		System.out.println("\nЗначение общего количества актеров после обращения к методу: " + Theatre.getAllAct());
+		System.out.println("\nРаботников в 1м театре: " + theatre_1.getNumberOfStageDirectors() + ", работников во 2м театре: " + theatre_2.getNumberOfStageDirectors());
+		System.out.println("\nЗначение общего количества работников до обращения к методу: " + Theatre.getAllDir());
+		Theatre.countAllDir(theatre_1);
+		Theatre.countAllDir(theatre_2);
+		System.out.println("\nЗначение общего количества актеров после обращения к методу: " + Theatre.getAllDir());
 	}
 }

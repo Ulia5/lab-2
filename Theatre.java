@@ -1,14 +1,18 @@
 import java.util.Scanner;
 
 public class Theatre {
-	private int numberOfStages = 0;               // Количество сцен
-	private Stage [] stages = new Stage[5];       // Сцены
-	private int numberOfActors = 0;               // Количество актеров
-	private int numberOfStageDirectors = 0;       // Количество работников постановочной группы
-	private String nameTh;                        // Название театра
-	private int yearOfFoundation = 0;             // Год основания
+	private int numberOfStages = 0;               	// Количество сцен
+	private Stage [] stages = new Stage[5];       	// Сцены
+	private int numberOfActors = 0;               	// Количество актеров
+	private int numberOfStageDirectors = 0;       	// Количество работников постановочной группы
+	private String nameTh;                        	// Название театра
+	private int yearOfFoundation = 0;             	// Год основания
+	private static int allActors = 0;				// Общее кол-во актеров во всех театрах
+	private static int allStageDirectors = 0;	  	// Общее кол-во работников во всех театрах
 
-	public Theatre() {                            // Конструктор Театра
+
+	public Theatre()
+	{   // Конструктор Театра
 		this.nameTh = toWriteName();
 		this.yearOfFoundation = toWriteYear();
 		this.numberOfStages = toWriteNumberOfStages();
@@ -42,6 +46,16 @@ public class Theatre {
 	public Stage getStage(int num)
 	{	// Возвращение сцены
 		return stages[num];
+	}
+
+	public int getNumberOfStageDirectors()
+	{	// Возвращение сцены
+		return numberOfStageDirectors;
+	}
+
+	public int getNumberOfActors()
+	{	// Возвращение сцены
+		return numberOfActors;
 	}
 
 	public void toPrint()
@@ -161,5 +175,25 @@ public class Theatre {
 	public void increasingNumberOfStageDirectors()
 	{   // Увеличение кол-ва работников
 		numberOfStageDirectors++;
+	}
+
+	public static void countAllAct(Theatre th)
+	{	// Подсчет общего кол-ва актеров во всех Театрах
+		allActors += th.getNumberOfActors();
+	}
+
+	public static int getAllAct()
+	{	// Возвращение общего кол-ва актеров в Театрах
+		return allActors;
+	}
+
+	public static void countAllDir(Theatre th)
+	{	// Подсчет общего кол-ва работников во всех Театрах
+		allStageDirectors += th.getNumberOfStageDirectors();
+	}
+
+	public static int getAllDir()
+	{	// Возвращение общего кол-ва работников в Театрах
+		return  allStageDirectors;
 	}
 }
