@@ -4,7 +4,7 @@ using System.Text;
 
 namespace c_sharp
 {
-    class Actor
+	class Actor
     {	// Описание класса Актер
 		private String nameAct;     // Имя
 		private String surnameAct;  // Фамилия
@@ -12,6 +12,19 @@ namespace c_sharp
 		private int roles = 0;      // Количетво ролей
 		private Theatre jobPlace;   // Место работы
 		private Performance[] performanceAct = new Performance[50]; // Постановки, с участием данного Актера
+
+		public int Age
+        {
+			get
+            {
+				return ageAct;
+            }
+			set
+            {
+				if (value > 0)
+					ageAct = value;
+            }
+        }
 
 		public Actor(Theatre theatre)
 		{   // Конструктор Актера (без параметров)
@@ -23,11 +36,10 @@ namespace c_sharp
 			Console.WriteLine();
 		}
 
-		public Actor(String name, String surname, int age, Theatre theatre)
+		public Actor(String nameAct, String surnameAct, Theatre theatre)
 		{   // Конструктор Актера (с параметрами)
-			this.nameAct = name;
-			this.surnameAct = surname;
-			this.ageAct = age;
+			this.nameAct = nameAct;
+			this.surnameAct = surnameAct;
 			this.jobPlace = theatre;
 			jobPlace.increasingNumberOfActors();
 		}
