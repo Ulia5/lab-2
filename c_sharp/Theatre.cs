@@ -12,6 +12,8 @@ namespace c_sharp
         int numberOfStageDirectors = 0;     // Количество работников постановочной группы
         string nameTh;                      // Название театра
         int yearOfFoundation = 0;           // Год основания
+        private static int allActors = 0;   // Общее кол-во актеров во всех театрах
+        private static int allStageDirectors = 0;  // Общее кол-во работников во всех театрах
 
         public Theatre()
         { // Конструктор Театра (без параметров)
@@ -205,5 +207,26 @@ namespace c_sharp
         {   // Уменьшение кол-ва работников сцены
             numberOfStageDirectors--;
         }
+
+        public static void countAllAct(Theatre th)
+        {  // Подсчет общего кол-ва актеров во всех Театрах
+            allActors += th.getNumberOfActors();
+        }
+
+        public static int getAllAct()
+        {  // Возвращение общего кол-ва актеров в Театрах
+            return allActors;
+        }
+
+        public static void countAllDir(Theatre th)
+        {  // Подсчет общего кол-ва работников во всех Театрах
+            allStageDirectors += th.getNumberOfStageDirectors();
+        }
+
+        public static int getAllDir()
+        {  // Возвращение общего кол-ва работников в Театрах
+            return allStageDirectors;
+        }
+
     }
 }
