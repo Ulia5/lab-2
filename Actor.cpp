@@ -2,7 +2,6 @@
 
 void Actor::setActor(Theatre* jobPlaceNew) 
 {   // Функция заполнения информации об Актере
-	roles = 0;
 	cout << "\tИмя актера: ";
 	cin >> nameAct;
 	while (nameAct.empty()) {		// Защита от неверного ввода
@@ -25,7 +24,7 @@ void Actor::setActor(Theatre* jobPlaceNew)
 	jobPlaceNew->addActor();
 }
 
-void Actor::setActor(string name, string surname, int age, Theatre* jobPlaceNew) 
+void Actor::setActor(string name, char* surname, int age, Theatre* jobPlaceNew) 
 {	// Функция заполнения информации об Актере(без ввода)
 	nameAct = name;
 	surnameAct = surname;

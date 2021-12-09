@@ -11,9 +11,7 @@ class Theatre {                         // Описание класса Театр
 	Stage stages[5];                    // Сцены
 	int numberOfActors = 0;				// Количество актеров
 	int numberOfStageDirectors = 0;     // Количество работников постановочной группы
-	static int allActors;				// Общее кол-во актеров во всех театрах
-	static int allStageDirectors;		// Общее кол-во работников во всех театрах
-	string nameTh;                      // Название театра
+	string nameTh;                       // Название театра
 	int yearOfFoundation = 0;           // Год основания
 public:
 	void setTheatre();
@@ -26,11 +24,5 @@ public:
 	void addStageDirector();
 	string getNameTh();
 	Stage* getStages(int number);
-	int getNumberOfActors();
-	int getNumberOfStageDirectors();
 	friend int allPerformances(Theatre th);
-	static void countAllAct(Theatre th);
-	static void countAllDir(Theatre th);
-	static int getAllAct();
-	static int getAllDir();
 };
