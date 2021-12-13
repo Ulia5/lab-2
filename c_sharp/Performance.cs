@@ -20,8 +20,16 @@ namespace c_sharp
 			Console.WriteLine();
 		}
 
+		public Performance(String name)
+		{   // Конструктор Постановки (с одним параметром)
+			this.namePerf = name;
+			this.performanceTime = toWritePerformanceTime();
+			this.ageRestrictions = toWriteAgeRestrictions();
+			Console.WriteLine();
+		}
+
 		public Performance(String name, int time,  int age)
-		{   // Конструктор Постановки (с параметрами)
+		{   // Конструктор Постановки (со всеми параметрами)
 			this.namePerf = name;
 			this.performanceTime = time;
 			this.ageRestrictions = age;

@@ -13,6 +13,16 @@ namespace c_sharp
 		private Theatre jobPlace;   // Место работы
 		private Performance[] performanceDir = new Performance[50]; // Постановки, с участием данного Работника
 
+		public StageDirector()
+		{   // Конструктор Работника (без параметров)
+			this.nameDir = toWriteNameDir();
+			this.surnameDir = toWriteSurnameDir();
+			this.ageDir = toWriteAgeDir();
+			this.jobPlace = toWriteTheatre();
+			jobPlace.increasingNumberOfStageDirectors();
+			Console.WriteLine();
+		}
+
 		public StageDirector(Theatre theatre)
 		{   // Конструктор Работника (без параметров)
 			this.nameDir = toWriteNameDir();
@@ -85,7 +95,7 @@ namespace c_sharp
 		}
 
 		public void delPerformanceDir(Performance performance)
-		{ // Удаление постановки из списка работ
+		{	// Удаление постановки из списка работ
 			bool flag = false;
 			int numPerf = 0;
 			for (int i = 0; i < getRoles(); i++)
@@ -145,6 +155,12 @@ namespace c_sharp
 				age = Convert.ToInt32(Console.ReadLine());
 			}
 			return age;
+		}
+
+		private Theatre toWriteTheatre()
+        {	// Ввод театра
+			Theatre theatre = new Theatre();
+			return theatre;
 		}
 
 		private void addRoles()

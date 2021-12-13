@@ -26,8 +26,18 @@ namespace c_sharp
             }
         }
 
-		public Actor(Theatre theatre)
+		public Actor()
 		{   // Конструктор Актера (без параметров)
+			this.nameAct = toWriteNameAct();
+			this.surnameAct = toWriteSurnameAct();
+			this.ageAct = toWriteAgeAct();
+			this.jobPlace = toWriteTheatre();
+			jobPlace.increasingNumberOfActors();
+			Console.WriteLine();
+		}
+
+		public Actor(Theatre theatre)
+		{   // Конструктор Актера (с одним параметром)
 			this.nameAct = toWriteNameAct();
 			this.surnameAct = toWriteSurnameAct();
 			this.ageAct = toWriteAgeAct();
@@ -36,10 +46,11 @@ namespace c_sharp
 			Console.WriteLine();
 		}
 
-		public Actor(String nameAct, String surnameAct, Theatre theatre)
-		{   // Конструктор Актера (с параметрами)
+		public Actor(String nameAct, String surnameAct, int age, Theatre theatre)
+		{   // Конструктор Актера (со всеми параметрами)
 			this.nameAct = nameAct;
 			this.surnameAct = surnameAct;
+			this.ageAct = age;
 			this.jobPlace = theatre;
 			jobPlace.increasingNumberOfActors();
 		}
@@ -157,6 +168,12 @@ namespace c_sharp
 				age = Convert.ToInt32(Console.ReadLine());
 			}
 			return age;
+		}
+
+		private Theatre toWriteTheatre()
+		{   // Ввод театра
+			Theatre theatre = new Theatre();
+			return theatre;
 		}
 
 		private void addRoles()

@@ -16,30 +16,28 @@ namespace c_sharp
         }
         static void Main(string[] args)
         {
-            int numStage_1 = 2, numPerf_1 = 1;
-            Performance[] performance_1 = new Performance[numPerf_1];
-            performance_1[0] = new Performance("Юнона и Авось", 250, 2000);
-            Stage[] stage_1 = new Stage[numStage_1];
-            stage_1[0] = new Stage("Большая", 560, numPerf_1, performance_1);
-            stage_1[1] = new Stage("Средняя", 360, numPerf_1, performance_1);
-            Theatre theatre_1 = new Theatre("Драматический", 1990, numStage_1, stage_1);
-            Theatre theatre_2 = new Theatre("Музыкальный", 1900, numStage_1, stage_1);
-            Actor actor_1 = new Actor("Олег", "Орлов", theatre_1);
-            int a = 30;
-            actor_1.Age = a;
-            StageDirector sd_1 = new StageDirector("Михаил", "Сидоров", 38, theatre_1);
-            StageDirector sd_2 = new StageDirector("Сергей", "Петров", 34, theatre_2);
+            Stage[] stages_1 = new Stage[2];
+            Performance[] performance = new Performance[2];
+            performance[0] = new Performance("Ромео и Джульетта", 200, 1999);
+            performance[1] = new Performance("Любовь и голуби", 180, 1990);
+            stages_1[0] = new Stage("Большая", 600, 2, performance);
+            Theatre theatre_1 = new Theatre("Драматический", 1990, 1, stages_1);
+            Theatre theatre_2 = new Theatre("Музыкальный", 2000, 1, stages_1);
+            Actor[] actors = new Actor[2];
+            actors[0] = new Actor("Михаил", "Боярский", 65, theatre_1);
+            actors[0] = new Actor("Михаил", "Коровин", 35, theatre_2);
             Console.WriteLine("Задание №1\n");
-            Console.WriteLine("Актеров в 1м театре: " + (theatre_1.getNumberOfActors()) + ", актеров во 2м театре: " + theatre_2.getNumberOfActors());
-            Console.WriteLine("\nЗначение общего количества актеров до обращения к методу: " + Theatre.getAllAct());
-            Theatre.countAllAct(theatre_1);
-            Theatre.countAllAct(theatre_2);
-            Console.WriteLine("\nЗначение общего количества актеров после обращения к методу: " + Theatre.getAllAct());
-            Console.WriteLine("\nРаботников в 1м театре: " + theatre_1.getNumberOfStageDirectors() + ", работников во 2м театре: " + theatre_2.getNumberOfStageDirectors());
-            Console.WriteLine("\nЗначение общего количества работников до обращения к методу: " + Theatre.getAllDir());
-            Theatre.countAllDir(theatre_1);
-            Theatre.countAllDir(theatre_2);
-            Console.WriteLine("\nЗначение общего количества актеров после обращения к методу: " + Theatre.getAllDir());
+            Console.WriteLine("Конструктор со всеми параметрами:");
+            actors[0].toPrint();
+            Console.WriteLine("Конструктор с 1 параметром:");
+            Actor actor = new Actor(theatre_1);
+            Console.WriteLine("Конструктор без параметром:");
+            Actor actor1 = new Actor();
+            Console.WriteLine("Инициализация массива конструктором с одним параметром:");
+            Actor[] actors1 = new Actor[2];
+            for (int i = 0; i < 2; i++)
+                actors1[i] = new Actor(theatre_2);
+
         }
     }
 }

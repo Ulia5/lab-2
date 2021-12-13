@@ -20,8 +20,17 @@ namespace c_sharp
 			Console.WriteLine();
 		}
 
+		public Stage(String name)
+		{   // Конструктор Сцены (с одним параметром)
+			this.nameSt = name;
+			this.hallCapacity = toWriteCapacity();
+			this.numberOfPerformances = toWriteNumberOfPerformance();
+			this.performances = toWritePerformance();
+			Console.WriteLine();
+		}
+
 		public Stage(String name, int capacity, int numberPerf, Performance[] performances)
-		{   // Конструктор Сцены (с параметрами)
+		{   // Конструктор Сцены (со всеми параметрами)
 			this.nameSt = name;
 			this.hallCapacity = capacity;
 			this.numberOfPerformances = numberPerf;

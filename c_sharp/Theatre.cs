@@ -6,17 +6,17 @@ namespace c_sharp
 {
     class Theatre
     {   // Описание класса Театр
-        int numberOfStages = 0;             // Количество сцен
-        Stage[] stages = new Stage[5];      // Сцены
-        int numberOfActors = 0;             // Количество актеров
-        int numberOfStageDirectors = 0;     // Количество работников постановочной группы
-        string nameTh;                      // Название театра
-        int yearOfFoundation = 0;           // Год основания
-        private static int allActors = 0;   // Общее кол-во актеров во всех театрах
-        private static int allStageDirectors = 0;  // Общее кол-во работников во всех театрах
+        int numberOfStages = 0;                     // Количество сцен
+        Stage[] stages = new Stage[5];              // Сцены
+        int numberOfActors = 0;                     // Количество актеров
+        int numberOfStageDirectors = 0;             // Количество работников постановочной группы
+        string nameTh;                              // Название театра
+        int yearOfFoundation = 0;                   // Год основания
+        private static int allActors = 0;           // Общее кол-во актеров во всех театрах
+        private static int allStageDirectors = 0;   // Общее кол-во работников во всех театрах
 
         public Theatre()
-        { // Конструктор Театра (без параметров)
+        {   // Конструктор Театра (без параметров)
             this.nameTh = toWriteName();
             this.yearOfFoundation = toWriteYear();
             this.numberOfStages = toWriteNumberOfStages();
@@ -24,8 +24,16 @@ namespace c_sharp
             Console.WriteLine();
         }
 
+        public Theatre(String name)
+        {   // Конструктор Театра (с одним параметром)
+            this.nameTh = name;
+            this.yearOfFoundation = toWriteYear();
+            this.numberOfStages = toWriteNumberOfStages();
+            this.stages = toWriteStage();
+            Console.WriteLine();
+        }
         public Theatre(String name, int year, int num, Stage[] stages)
-        {   // Конструктор Театра (с параметрами)
+        {   // Конструктор Театра (со всеми параметрами)
             this.nameTh = name;
             this.yearOfFoundation = year;
             this.numberOfStages = num;
@@ -58,7 +66,7 @@ namespace c_sharp
         }
 
         public int getNumberOfStageDirectors()
-        {
+        {   // Возвращение кол-ва работников
             return numberOfStageDirectors;
         }
 
@@ -194,7 +202,7 @@ namespace c_sharp
         }
 
         private void decreaseNumberOfActors()
-        {     // Уменьшение кол-ва актеров
+        {   // Уменьшение кол-ва актеров
             numberOfStages--;
         }
 
@@ -209,22 +217,22 @@ namespace c_sharp
         }
 
         public static void countAllAct(Theatre th)
-        {  // Подсчет общего кол-ва актеров во всех Театрах
+        {   // Подсчет общего кол-ва актеров во всех Театрах
             allActors += th.getNumberOfActors();
         }
 
         public static int getAllAct()
-        {  // Возвращение общего кол-ва актеров в Театрах
+        {   // Возвращение общего кол-ва актеров в Театрах
             return allActors;
         }
 
         public static void countAllDir(Theatre th)
-        {  // Подсчет общего кол-ва работников во всех Театрах
+        {   // Подсчет общего кол-ва работников во всех Театрах
             allStageDirectors += th.getNumberOfStageDirectors();
         }
 
         public static int getAllDir()
-        {  // Возвращение общего кол-ва работников в Театрах
+        {   // Возвращение общего кол-ва работников в Театрах
             return allStageDirectors;
         }
 
