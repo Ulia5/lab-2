@@ -16,12 +16,16 @@ public class Performance
 		System.out.println();
 	}
 
-	public Performance(String name)
-	{   // Конструктор с одним параметром
-		this.namePerf = name;
-		this.performanceTime = toWritePerformanceTime();
-		this.ageRestrictions = toWriteAgeRestrictions();
-		System.out.println();
+	public Performance (String str)
+	{	// Конструктор (ввод всей информации 1 строкой)
+		String[] infPerf = str.split("\\s+");
+		if (infPerf.length != 3)
+		{
+			throw new IllegalArgumentException("Wrong format! Correct format: \nИгрок 180 2010");
+		}
+		this.namePerf = infPerf[0];
+		this.performanceTime = Integer.parseInt(infPerf[1]);
+		this.ageRestrictions = Integer.parseInt(infPerf[2]);
 	}
 
 	public Performance(String name, int time, int age)
