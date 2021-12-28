@@ -21,20 +21,20 @@ namespace c_sharp
             performance[0] = new Performance("Ромео и Джульетта", 200, 1999);
             performance[1] = new Performance("Любовь и голуби", 180, 1990);
             stages_1[0] = new Stage("Большая", 600, 2, performance);
-            Theatre theatre_1 = new Theatre("Драматический", 1990, 1, stages_1);
-            Theatre theatre_2 = new Theatre("Музыкальный", 2000, 1, stages_1);
+            Theatre[,] theatre = new Theatre[2,1];
+            theatre[0,0] = new Theatre("Драматический", 1990, 1, stages_1);
+            theatre[1,0] = new Theatre("Музыкальный", 2000, 1, stages_1);
             Actor[] actors = new Actor[2];
-            actors[0] = new Actor("Михаил", "Боярский", 65, theatre_1);
-            actors[0] = new Actor("Михаил", "Коровин", 35, theatre_2);
+            actors[0] = new Actor("Михаил", "Боярский", 65, theatre[0,0]);
+            actors[0] = new Actor("Михаил", "Коровин", 35, theatre[1,0]);
             Console.WriteLine("Задание №1\n");
-            try
-            {
-                performance[1] = new Performance(Console.ReadLine());
-            }
-            catch (ArgumentException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+            Console.WriteLine("Одномерный массив:");
+            for (int i = 0; i < 2; i++)
+                performance[i].toPrint();
+            Console.WriteLine("Двумерный массив:");
+            for (int i = 0; i < 2; i++)
+                for (int j = 0; j < 1; j++)
+                    theatre[i,j].toPrint();
 
         }
     }
