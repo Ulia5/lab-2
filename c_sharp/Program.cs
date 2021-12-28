@@ -27,16 +27,14 @@ namespace c_sharp
             actors[0] = new Actor("Михаил", "Боярский", 65, theatre_1);
             actors[0] = new Actor("Михаил", "Коровин", 35, theatre_2);
             Console.WriteLine("Задание №1\n");
-            Console.WriteLine("Конструктор со всеми параметрами:");
-            actors[0].toPrint();
-            Console.WriteLine("Конструктор с 1 параметром:");
-            Actor actor = new Actor(theatre_1);
-            Console.WriteLine("Конструктор без параметром:");
-            Actor actor1 = new Actor();
-            Console.WriteLine("Инициализация массива конструктором с одним параметром:");
-            Actor[] actors1 = new Actor[2];
-            for (int i = 0; i < 2; i++)
-                actors1[i] = new Actor(theatre_2);
+            try
+            {
+                performance[1] = new Performance(Console.ReadLine());
+            }
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
 
         }
     }

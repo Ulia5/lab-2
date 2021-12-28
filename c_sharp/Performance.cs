@@ -20,13 +20,18 @@ namespace c_sharp
 			Console.WriteLine();
 		}
 
-		public Performance(String name)
-		{   // Конструктор Постановки (с одним параметром)
-			this.namePerf = name;
-			this.performanceTime = toWritePerformanceTime();
-			this.ageRestrictions = toWriteAgeRestrictions();
-			Console.WriteLine();
+		public Performance(String str)
+		{  // Конструктор (ввод всей информации 1 строкой)
+			String[] infPerf = str.Split(" ");
+			if (infPerf.Length != 3)
+			{
+				throw new ArgumentException("Wrong format! Correct format: \nИгрок 180 2010");
+			}
+			this.namePerf = infPerf[0];
+			this.performanceTime = Convert.ToInt32(infPerf[1]);
+			this.ageRestrictions = Convert.ToInt32(infPerf[2]);
 		}
+
 
 		public Performance(String name, int time,  int age)
 		{   // Конструктор Постановки (со всеми параметрами)
