@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Actor
+public class Actor implements Cloneable
 {
 	private String nameAct;     // Имя актера
 	private String surnameAct;  // Фамилия актера
@@ -176,5 +176,12 @@ public class Actor
 	private void delRoles()
 	{   // Удаление роли
 		roles--;
+	}
+
+	@Override
+	public Actor clone() throws CloneNotSupportedException {
+		Actor clone = (Actor) super.clone();
+		clone.performanceAct = (Performance[]) performanceAct.clone();
+		return clone;
 	}
 }

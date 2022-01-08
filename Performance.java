@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Performance
+public class Performance implements Cloneable
 {
 	private String namePerf;     			// Название Постановки
 	private int performanceTime = 0;        // Время Постановки (в минутах)
@@ -141,5 +141,9 @@ public class Performance
 	public void delStageDirector()
 	{   // Удаление работника из Постановки
 		numberOfStageDirectors--;
+	}
+
+	public Performance clone() throws CloneNotSupportedException {
+		return (Performance) super.clone();
 	}
 }

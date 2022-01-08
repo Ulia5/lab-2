@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws CloneNotSupportedException {
 		Stage[] stages_1 = new Stage[2];
 		Performance[] performance = new Performance[2];
 		performance[0] = new Performance("Ромео и Джульетта", 200, 1999);
@@ -15,12 +15,29 @@ public class Main {
 		actors[0] = new Actor("Михаил",  "Боярский", 65, theatre[0][0]);
 		actors[1] = new Actor("Михаил",  "Коровин", 35, theatre[1][0]);
 		System.out.println("Задание №1\n");
-		System.out.println("Одномерный массив:");
-		for(int i = 0; i < 2; i++)
-			performance[i].toPrint();
-		System.out.println("Двумерный массив:");
-		for(int i = 0; i < 2; i++)
-			for(int j = 0; j < 1; j++)
-				theatre[i][j].toPrint();
+		Suit newSuit = new Suit("черный",40,5000, "фрак");
+		newSuit.printCostume();
+		System.out.println("Задание №2\n");
+		Sword newSword = new Sword(5, 10, 10000);
+		newSword.printProps();
+		newSword.changePeriodOfUse(2);
+		newSword.printProps();
+		newSword.changePeriodOfUse(9);
+		newSword.printProps();
+		System.out.println("Задание №3\n");
+		System.out.println("Общая стоимость реквизита и костюмов: " + (newSuit.getPrice() + newSword.getPrice()));
+		System.out.println("Задание №4\n");
+		Actor actor = new Actor("Михаил",  "Лямин", 65, theatre[1][0]);
+		actor.addPerformanceAct(performance[0]);
+		Actor clonedActor = actor.clone();
+		System.out.println("Оригинал:");
+		actor.toPrint();
+		System.out.println("Клон:");
+		clonedActor.toPrint();
+		clonedActor.addPerformanceAct(performance[1]);
+		System.out.println("Оригинал после изменения:");
+		actor.toPrint();
+		System.out.println("Клон после изменения:");
+		clonedActor.toPrint();
 	}
 }
