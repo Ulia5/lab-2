@@ -1,0 +1,4 @@
+﻿interface TheatricalThings
+{
+    int getPrice();
+}

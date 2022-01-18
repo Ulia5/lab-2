@@ -28,14 +28,17 @@ namespace c_sharp
             actors[0] = new Actor("Михаил", "Боярский", 65, theatre[0,0]);
             actors[0] = new Actor("Михаил", "Коровин", 35, theatre[1,0]);
             Console.WriteLine("Задание №1\n");
-            Console.WriteLine("Одномерный массив:");
-            for (int i = 0; i < 2; i++)
-                performance[i].toPrint();
-            Console.WriteLine("Двумерный массив:");
-            for (int i = 0; i < 2; i++)
-                for (int j = 0; j < 1; j++)
-                    theatre[i,j].toPrint();
-
+            Suit newSuit = new Suit("черный", 40, 5000, "фрак");
+            newSuit.printCostume();
+            Console.WriteLine("Задание №2\n");
+            Sword newSword = new Sword(5, 10, 10000);
+            newSword.printProps();
+            newSword.changePeriodOfUse(2);
+            newSword.printProps();
+            newSword.changePeriodOfUse(9);
+            newSword.printProps();
+            Console.WriteLine("Задание №3\n");
+            Console.WriteLine("Общая стоимость реквизита и костюмов: " + (newSuit.getPrice() + newSword.getPrice()));
         }
     }
 }
