@@ -4,6 +4,8 @@
 #include "Theatre.h"
 #include "Actor.h"
 #include "StageDirector.h"
+#include "Sword.h"
+#include "Suit.h"
 #include <locale>
 #include <windows.h>
 
@@ -57,13 +59,18 @@ int main()
 
 	// Примеер для задания №1
 	cout << "Задание №1\n" << endl;
-	cout << "Одномерный массив:" << endl;
-	for (int i = 0; i < 2; i++)
-		performances[i]->toString();
-	cout << "Двумерный массив:" << endl;
-	for (int i = 0; i < 2; i++)
-		for (int j = 0; j < 1; j++)
-			stageDirectors[i][j].toString();
+	Suit newSuit = { "черный", 40, 5000, "фрак" };
+	newSuit.printCostume();
+	cout << "Задание №2\n" << endl;
+	Sword newSword = { 5, 10, 10000 };
+	newSword.printProps();
+	newSword.changePeriodOfUse(2);
+	newSword.printProps();
+	newSword.changePeriodOfUse(9);
+	newSword.printProps();
+	cout << "Задание №3\n" << endl;
+	cout << "Общая стоимость реквизита и костюмов: " << (newSuit.getPrice() + newSword.getPrice()) << endl;
+
 	// Освобождение памяти
 	delete[] theatres;
 	for (int i = 0; i < 2; i++) {
