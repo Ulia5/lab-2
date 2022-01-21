@@ -1,4 +1,4 @@
-public class Costume implements TheatricalThings {
+public class Costume extends TheatricalThings {
     protected String color;
     protected int size;
     protected int price;
@@ -9,12 +9,13 @@ public class Costume implements TheatricalThings {
         this.price = price;
     }
 
-    public void printCostume() {
+    @Override
+    public void print() {
         System.out.println("Цвет: " + color);
         System.out.println("Размер: " + size);
-        System.out.println("Цена: " + price);
     }
 
+    @Override
     public int getPrice() {
         return price;
     }

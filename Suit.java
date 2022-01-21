@@ -7,8 +7,8 @@ public class Suit extends Costume{
     }
 
     @Override
-    public void printCostume() {
-        super.printCostume();
+    public void print() {
+        super.print();
         System.out.println("“ип: " + type);
     }
 

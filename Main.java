@@ -16,28 +16,8 @@ public class Main {
 		actors[1] = new Actor("Михаил",  "Коровин", 35, theatre[1][0]);
 		System.out.println("Задание №1\n");
 		Suit newSuit = new Suit("черный",40,5000, "фрак");
-		newSuit.printCostume();
-		System.out.println("Задание №2\n");
+		newSuit.thingInf();
 		Sword newSword = new Sword(5, 10, 10000);
-		newSword.printProps();
-		newSword.changePeriodOfUse(2);
-		newSword.printProps();
-		newSword.changePeriodOfUse(9);
-		newSword.printProps();
-		System.out.println("Задание №3\n");
-		System.out.println("Общая стоимость реквизита и костюмов: " + (newSuit.getPrice() + newSword.getPrice()));
-		System.out.println("Задание №4\n");
-		Actor actor = new Actor("Михаил",  "Лямин", 65, theatre[1][0]);
-		actor.addPerformanceAct(performance[0]);
-		Actor clonedActor = actor.clone();
-		System.out.println("Оригинал:");
-		actor.toPrint();
-		System.out.println("Клон:");
-		clonedActor.toPrint();
-		clonedActor.addPerformanceAct(performance[1]);
-		System.out.println("Оригинал после изменения:");
-		actor.toPrint();
-		System.out.println("Клон после изменения:");
-		clonedActor.toPrint();
+		newSword.thingInf();
 	}
 }

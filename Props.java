@@ -1,4 +1,4 @@
-public abstract class Props implements TheatricalThings {
+public abstract class Props extends TheatricalThings {
     protected int hazardLevel;
     protected int serviceLife;
     protected int periodOfUse;
@@ -11,19 +11,20 @@ public abstract class Props implements TheatricalThings {
         }
     }
 
-    protected void printProps() {
+    @Override
+    protected void print() {
         System.out.println("Уровень опасности: " + hazardLevel);
         System.out.println("Срок службы: " + serviceLife);
         System.out.println("Период использования: " + periodOfUse);
-        System.out.println("Цена: " + price);
         if(status) {
-            System.out.println("Статус: используется\n");
+            System.out.println("Статус: используется");
         }
         else {
-            System.out.println("Статус: списано\n");
+            System.out.println("Статус: списано");
         }
     }
 
+    @Override
     public int getPrice() {
         return price;
     }
