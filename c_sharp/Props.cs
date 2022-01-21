@@ -16,23 +16,22 @@ public abstract class Props : TheatricalThings
         }
     }
 
-    public void printProps()
+    public override void print()
     {
         Console.WriteLine("Уровень опасности: " + hazardLevel);
         Console.WriteLine("Срок службы: " + serviceLife);
         Console.WriteLine("Период использования: " + periodOfUse);
-        Console.WriteLine("Цена: " + price);
         if (status)
         {
-            Console.WriteLine("Статус: используется\n");
+            Console.WriteLine("Статус: используется");
         }
         else
         {
-            Console.WriteLine("Статус: списано\n");
+            Console.WriteLine("Статус: списано");
         }
     }
 
-    public int getPrice()
+    public override int getPrice()
     {
         return price;
     }

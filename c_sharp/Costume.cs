@@ -21,14 +21,13 @@ public class Costume : TheatricalThings
         this.price = price;
     }
 
-    public virtual void printCostume()
+    public override void print()
     {
         Console.WriteLine("Цвет: " + color);
         Console.WriteLine("Размер: " + size);
-        Console.WriteLine("Цена: " + price);
     }
 
-    public int getPrice()
+    public override int getPrice()
     {
         return price;
     }

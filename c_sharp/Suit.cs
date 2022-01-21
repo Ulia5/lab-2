@@ -9,9 +9,9 @@ public class Suit : Costume
     }
 
 
-    public override void printCostume()
+    public override void print()
     {
-        base.printCostume();
+        base.print();
         Console.WriteLine("Тип: " + type);
     }
 }
