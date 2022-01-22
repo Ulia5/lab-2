@@ -6,6 +6,7 @@
 #include "StageDirector.h"
 #include "Sword.h"
 #include "Suit.h"
+#include "Price.h"
 #include <locale>
 #include <windows.h>
 
@@ -60,16 +61,10 @@ int main()
 	// Примеер для задания №1
 	cout << "Задание №1\n" << endl;
 	Suit newSuit = { "черный", 40, 5000, "фрак" };
-	newSuit.printCostume();
-	cout << "Задание №2\n" << endl;
 	Sword newSword = { 5, 10, 10000 };
-	newSword.printProps();
-	newSword.changePeriodOfUse(2);
-	newSword.printProps();
-	newSword.changePeriodOfUse(9);
-	newSword.printProps();
-	cout << "Задание №3\n" << endl;
-	cout << "Общая стоимость реквизита и костюмов: " << (newSuit.getPrice() + newSword.getPrice()) << endl;
+	int p = newSuit.getPrice() + newSword.getPrice();
+	Price<int> price(p);
+	price.printPrice();
 
 	// Освобождение памяти
 	delete[] theatres;

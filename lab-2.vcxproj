@@ -142,6 +142,7 @@
     <ClCompile Include="Actor.cpp" />
     <ClCompile Include="lab-2.cpp" />
     <ClCompile Include="Performance.cpp" />
+    <ClCompile Include="Price.cpp" />
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="StageDirector.cpp" />
     <ClCompile Include="Theatre.cpp" />
@@ -151,6 +152,7 @@
     <ClInclude Include="Costume.h" />
     <ClInclude Include="ITheatricalThings.h" />
     <ClInclude Include="Performance.h" />
+    <ClInclude Include="Price.h" />
     <ClInclude Include="Props.h" />
     <ClInclude Include="Stage.h" />
     <ClInclude Include="StageDirector.h" />
